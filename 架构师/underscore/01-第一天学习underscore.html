@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!--<script src="js/demo.js"></script>-->
+  <script src="js/demo0.1.js"></script>
+  <!--<script src="js/underscore%201.9.js"></script>-->
+</head>
+<body>
+<input type="text" >
+
+
+<script type="text/javascript">
+  let arr = [1, 2, 3, 3, 2, 1, 'a', 'A'];
+
+  /*console.log(_.uniq(arr, function (value) {
+    return typeof value == 'string' ? value.toLocaleLowerCase() : value;
+  }));
+  */
+  console.log(_(arr).uniq(function (value) {
+    return typeof value === 'string' ? value.toLowerCase() : value;
+  }));
+
+  // console.log(_(arr).uniq());
+  /*
+  * 1.对象的
+  *
+  * */
+
+  /* console.log(_.uniq(arr, function (value) {
+     // console.log(value);
+     return typeof value === 'string' ? value.toLowerCase() : value;
+   }));*/
+  /* console.log(_(arr).uniq(function (value) {
+     return typeof value === 'string' ? value.toLowerCase() : value;
+     // console.log(value);
+   }));*/
+
+</script>
+
+</body>
+</html>

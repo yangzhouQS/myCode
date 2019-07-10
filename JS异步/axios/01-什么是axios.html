@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="axios.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+  /*
+  * 1.发送一个get请求
+  * params:会将对象传递的数据拼接为字符串进行请求
+  * */
+  axios.get('json/data.json', {
+    params: {
+      name: 'xainjs',
+      age: 26
+    }
+  }).then(data => {
+    console.log(data);
+  });
+  /*
+  * 2.POST请求
+  * 3.基于GET或者POST方法发请求，返回的结果都是PROMISE实例
+  * */
+  axios.post('./json/data.json').then(data => {
+    /*
+    * config:当前向服务器发送请求的配置选项
+    * data:服务器响应返回的数据
+    * headers:从服务器获取需要的头内容
+    * request:创建ajax实例
+    * status:状态码
+    * statusText:状态码描述
+    * */
+    console.log(data);
+  }, error => {
+    console.log('请求失败', error);
+    //请求失败 Error: Request failed with status code 404
+  });
+
+</script>
+
+</body>
+</html>

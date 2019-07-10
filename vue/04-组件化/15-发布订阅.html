@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = 'zh_CN'>
+<head>
+	<meta charset = 'UTF-8'>
+	<title>Title</title>
+	<script src = '../src/vue.js'></script>
+</head>
+<body>
+<div id = 'app'>
+	<App></App>
+</div>
+<script>
+  let son = {
+    template: `<div>son <button @click='handleClick'>触发父亲要钱的方法</button></div>`,
+    props: ['money'],
+    methods: {
+      handleClick() {
+        //儿子触发送钱的方式
+        this.$emit( 'func', 666 );//传递参数到父亲
+      }
+    },
+
+  };
+  let parent = {
+    //儿子先订阅父亲要钱的方法事件
+    template: `<div>parent {{ money }} 	<son @func='show'></son></div>`,
+    data() {
+      return {
+        money: 400
+      };
+    },
+    methods: {
+      show(val) {
+        console.log( 'parent show方法', val );
+        this.money = val;
+      }
+    },
+    components: {
+      son
+    }
+  };
+  let App = {
+    template: `<div>
+				<parent></parent>
+				</div>`,
+    components: {
+      parent,
+      son
+    }
+  };
+  new Vue( {
+    el: '#app',
+    components: {
+      App
+    }
+  } );
+</script>
+</body>
+</html>

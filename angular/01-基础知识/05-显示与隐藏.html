@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="../src/angular.js"></script>
+</head>
+<body ng-app="app">
+<button ng-click="flag=!flag">切换吧</button>
+<!--
+ng-if:操作的是DOM的移除,加载的速度比较的快的
+ng-show:操作的是样式,开始的时候就会加载进来的,切换的代价比较的地
+-->
+<p ng-if="flag">显示</p>
+<p ng-show="flag">show显示的形式</p>
+<script>
+  //1.指定app控制的范围
+  //2.创建module
+  let app = angular.module('app', []);
+  //3.创建控制器
+  app.controller('firstController', ['$scope', function ($scope) {
+    $scope.flag = true;
+  }]);
+</script>
+</body>
+</html>

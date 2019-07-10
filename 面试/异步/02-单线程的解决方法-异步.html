@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>异步-单线程的解决方案</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  console.log('start');
+
+  //定时器不会阻塞其他任务
+  setTimeout(() => {
+    console.log('3s后打印的');
+  }, 3000);
+  console.log('end');
+  console.log('单线程异步解决方案');
+</script>
+
+</body>
+</html>

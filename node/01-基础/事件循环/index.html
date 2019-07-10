@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  var orig_setTimeout = window.setTimeout;
+  window.setTimeout = function (fun, wait) {
+    if (wait < 15) {
+      orig_setTimeout(fun, wait);
+    } else {
+      var img = new Image();
+      img.onload = img.onerror = function () {
+        fun();
+      };
+      img.src = "data:,foo";
+    }
+  };
+  console.log('hello');
+  window.setTimeout(function () {
+    console.log("DSB");
+  }, 0);
+  console.log('word');
+
+</script>
+
+</body>
+</html>

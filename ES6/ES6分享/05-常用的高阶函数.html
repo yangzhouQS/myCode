@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  /*
+  * forEach()循环 //不会改变原数组,没有返回值
+  * map()映射
+  * reduce()聚合
+  * filter()过滤
+  * some()找false,有false直接返回false
+  * every()找true,遇到true直接停止返回true
+  * */
+  // Array.prototype.forEach()
+  // Array.prototype.map()
+  // Array.prototype.reduce()
+  // Array.prototype.filter()
+
+  let employee = [
+    {name: 'jack', gender: '男', age: 46, salary: 3500},
+    {name: 'Tom', gender: '男', age: 26, salary: 2600},
+    {name: 'Alice', gender: '女', age: 29, salary: 4000},
+    {name: 'da niu', gender: '男', age: 50, salary: 8000}
+  ];
+  let salary = [3500, 2600, 4000, 6000];
+  //1 - 遍历数组,for循环,for...in..,while循环
+  /**
+   * 参数一:数组的当前项
+   * 参数二:索引
+   * 参数三:操作的数组
+   */
+  let obj = {name: "Tom"};
+  salary.forEach(function (value, index, array) {
+    console.log(index, value, array, this);
+  }, obj);
+
+  //2 - 工资小于5000的涨工资500,大于5000的涨501
+  let result = employee.map(function (obj, index, array) {
+    //console.log(obj.name, obj.age, obj.gender, obj.salary);
+    return obj.salary < 5000 ? obj.salary += 500 : obj.salary;
+  }, obj);
+  console.log('result = ', result);
+
+  //3 - 筛选出工资大于等于4000元的员工姓名和工资
+  let result2 = employee.filter(function (obj, index, array) {
+    if (obj.salary > 3500) {
+      // return [obj.name, obj.salary];
+      console.log(obj.name, obj.salary);
+      return [1, 2, 3];
+    }
+    // return obj.salary > 3500 ? [obj.name, obj.salary] : null;
+  }, obj);
+  console.log(result2);
+
+  //4 - 计算索引员工每个月的工资总和
+  /*let result3 = employee.reduce(function (prev, next, index, array) {
+    console.log(next.salary);
+    //return prev + next.salary;
+  });*/
+  let a = [1, 2, 3, 4, 5];
+  console.log('a = ', a);
+  /**
+   * 第一个参数为回调函数:
+   * 第二个参数为:起始计算的值,默认为从0开始计算
+   * @type {number}
+   */
+  let result3 = a.reduce(function (prev, next, index, array) {
+    console.log(`(${prev}:${next})`);
+    return prev + next;
+  }, 5)
+  console.log('result3 = ', result3);
+
+
+  let result4 = employee.reduce(function (prev, next, index, array) {
+    console.log(`(${prev}:${next.salary})`);
+    return prev + next.salary;
+  }, 0);
+  console.log('result4 = ', result4);
+
+</script>
+
+</body>
+</html>

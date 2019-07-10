@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      color: red;
+      background-color: #ffdbc8;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+  <script src="../src/axios.js"></script>
+  <script src="../src/vue-router.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <div>
+    <router-link to="/user">会员中心管理页面</router-link>
+    <router-link to="/user/foo">我的管理中心</router-link>
+    <router-link to="/user/foo/profile">我的概括</router-link>
+    <router-link to="/user/foo/posts">我的个人信息中心</router-link>
+  </div>
+  <router-view></router-view>
+</div>
+<template id="user">
+  <div>
+    <h1>欢迎光临会员中心</h1>
+    <router-view></router-view>
+  </div>
+</template>
+<template id="userHome">
+  <p>会员中心</p>
+</template>
+<template id="userProfile">
+  <p>用户概括</p>
+</template>
+<template id="userPosts">
+  <p>用户详细的信息</p>
+</template>
+<script type="text/javascript">
+  let User = {
+    template: '#user'
+  };
+  let UserHome = {
+    template: '#userHome'
+  };
+  let UserProfile = {
+    template: '#userProfile'
+  };
+  let UserPosts = {
+    template: '#userPosts'
+  };
+
+  let routes = [
+    {path: '/', component: User},
+    {path: '/user', redirect: '/user'},
+    {
+      path: '/user/:id', component: User,
+      children: [
+        //   /user/.../profile
+        {path: '', component: UserHome},
+        {path: 'profile', component: UserProfile},
+        {path: 'posts', component: UserPosts}
+      ]
+    }
+  ];
+  let router = new VueRouter({routes: routes});
+  new Vue({router}).$mount('#app');
+</script>
+
+</body>
+</html>

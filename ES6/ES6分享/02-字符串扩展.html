@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<ul id="uu"></ul>
+<script type="text/javascript">
+  /*
+  * 1 - 字符串新增的函数
+  * 字符串重复:string.repeat
+  * es7的字符串补全长度:string.padStart();//前面补全
+  *                  string.padEnd()//后面补全
+  * */
+  console.log('x'.padStart(5, '0'));
+  console.log('x'.padEnd(5, '0'));
+
+  //2 - 时间输出宽度不够两位使用0补全
+  let d = new Date();
+  let y = d.getHours().toString().padStart(2, '0');
+  let m = d.getMinutes().toString().padStart(2, '0');
+  let s = d.getSeconds().toString().padStart(2, '0');
+  console.log(y, m, s);
+
+
+  //3 - 模板字符串:解析变量
+  /*
+  //console.log(`${y}:${m}:${s}`);
+  let subjects = ['java', 'php', 'go', 'python', 'C++', 'web前端'];
+  let uu = document.getElementById('uu');
+  let str = [];
+  for (let i = 0; i < subjects.length; i++) {
+    str.push('<li>' + subjects[i] + '</li>')
+  }
+  uu.innerHTML = str.join('');*/
+</script>
+
+</body>
+</html>

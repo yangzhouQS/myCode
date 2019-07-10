@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <button @click="flag=true">登陆</button>
+  <button @click="flag=false">注册</button>
+  <login v-if="flag"></login>
+  <register v-else="flag"></register>
+</div>
+<script type="text/javascript">
+  Vue.component('login', {
+    template: `<h1>登陆界面</h1>`,
+  });
+  Vue.component('register', {
+    template: `<h1>注册界面</h1>`
+  });
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      flag: true
+    },
+    component: {}
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="../src/angular.js"></script>
+	<link rel="stylesheet" href="../src/bootstrap/css/bootstrap.css">
+</head>
+<body ng-app="app">
+<div ng-controller="myCtr">
+	<div class="container">
+		<form action="">
+			<div class="form-group">
+				<label for="username">user</label>
+				<input type="text" ng-model="user" class="form-control" id="username">
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" ng-model="myVal1">
+			</div>
+			<div class="form-group">
+				<input type="radio" ng-model="myVar" value="dogs">Dogs
+				<input type="radio" ng-model="myVar" value="tuts">Tutorials
+				<input type="radio" ng-model="myVar" value="cars">Cars
+			</div>
+			<div class="form-group">
+				<select ng-model="myVars" multiple="multiple">
+					<option value="">
+					<option value="dogs">Dogs
+					<option value="tuts">Tutorials
+					<option value="cars">Cars
+				</select>
+			</div>
+			<h3 class="page-header">user = {{user}}</h3>
+			<h3 class="page-header" ng-show="myVal1">myVal = {{myVal1}}</h3>
+			<h3 class="page-header" ng-show="myVar">myVar = {{myVar}}</h3>
+			<h3 class="page-header" ng-show="myVars">myVar = {{myVars}}</h3>
+		</form>
+	</div>
+</div>
+<script>
+  let app = angular.module('app', []);
+  app.controller('myCtr', ['$scope', function ($scope) {
+    $scope.user = '';
+    $scope.myVal1 = [];
+    $scope.myVars = [];
+  }]);
+</script>
+</body>
+</html>

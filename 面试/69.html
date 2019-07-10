@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  var o = new Object();
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.getName = function () {
+      console.log(this.name);
+    };
+  }
+
+  Person.prototype.getAge = function () {
+    console.log(this.age);
+  };
+  var p = new Person('Tom', 16);
+
+  var arr = new Array();
+  console.dir(arr.__proto__ === Array.prototype);//Array
+  console.dir(arr.__proto__.__proto__);//Object
+  console.dir(arr.__proto__.__proto__.__proto__);//null
+
+
+</script>
+</body>
+</html>

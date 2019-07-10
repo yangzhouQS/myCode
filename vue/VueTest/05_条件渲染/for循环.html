@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>08_条件渲染</title>
+</head>
+<body>
+<div id="demo">
+  <ul v-for="(v,index) in user">
+    <li>{{index}} - {{v.name}} - {{v.age}} - {{v.sex}}</li>
+  </ul>
+</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: '#demo',
+    data: {
+      user: [
+        {name: "李四", age: 26, sex: "男"},
+        {name: "王茂", age: 33, sex: "男"},
+        {name: "小丽", age: 18, sex: "女"}
+      ]
+    },
+  });
+</script>
+</body>
+</html>

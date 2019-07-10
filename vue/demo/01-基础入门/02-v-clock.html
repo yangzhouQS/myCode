@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--v-clock:阻止因网速过慢,显示vue的插值表达式,闪烁的问题,一般配合css使用-->
+  <p v-cloak>msg = {{msg}}</p>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      msg: "HelloWord"
+    }
+  });
+</script>
+
+</body>
+</html>

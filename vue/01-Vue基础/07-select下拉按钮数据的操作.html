@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <!--
+  单选是v-model里面是一个值,如果没有value时,存放的是option的内容
+  多选时,数据需要使用数组接收/默认的字符串也会转换为数组,数组存放的时value值或者option的内容
+  -->
+  <select v-model="sel" multiple>
+    <option value="玉米1">玉米</option>
+    <option>大米2</option>
+    <option value="小米">小米</option>
+    <option value="红米">红米</option>
+    <option value="虾米">虾米</option>
+    <option value="花生米">花生米</option>
+  </select>
+  <p>{{sel}}</p>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      sel: ''//也可以为数组,多选时会默认转换为数组
+    }
+  });
+
+</script>
+
+</body>
+</html>

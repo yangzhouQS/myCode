@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+
+<!--<script type="text/javascript">
+  let wait = function () {
+    let task = function () {
+      console.log('task');
+    }
+    setTimeout(task, 200);
+    //在此函数执行完毕之后进行一系列的操作,此函数会非常的庞大,不易于维护
+  }
+  wait();
+</script>-->
+
+<script></script>
+<script>
+  function waitHandle() {
+    let dtd = $.Deferred();//创建deferred对象
+    let await = function (dtd) {
+      let task = function () {
+        console.log('执行完毕');
+        // dtd.resolve('ok');//表示异步任务执行完成/成功
+        dtd.reject('error');//表示异步任务执行失败
+      }
+      setTimeout(task, 1000);
+      return dtd;
+    }
+    return await(dtd);
+  }
+
+  waitHandle().then(data => {
+    //resolve成功执行的函数
+    console.log(data);
+  }, reason => {
+    //reject失败执行的代码
+    console.log('失败', reason);
+  });
+
+  //也可以使用done()和fail进行调用
+  waitHandle().done(res => {
+    console.log(res);
+  }).fail(reason => {
+    console.log(reason);
+  });
+
+  let w = waitHandle();
+  $.when(w).then(data => {
+    console.log('ok - ', data);
+  }).catch(error => {
+    console.log('err - ', error);
+  });
+</script>
+
+</body>
+</html>

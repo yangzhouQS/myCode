@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      width: 200px;
+      height: 40px;
+      outline: none;
+      border: none;
+      border: 1px solid #ddd;
+      transition: all 0.3s linear;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: forestgreen;
+    }
+
+    /*
+        !*进入的动画*!
+        .fade-enter {
+          opacity: 0;
+          transform: translateX(150px);
+        }
+
+        .fade-enter-active {
+          transition: all 1s linear;
+        }
+
+        .fade-enter-to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        !*离开的动画*!
+        .fade-leave {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .fade-leave-active {
+          transition: all 1s linear;
+        }
+
+        .fade-leave-to {
+          opacity: 0;
+          transform: translateX(150px);
+        }*/
+
+    /*提取上面公共的部分*/
+
+    /*进入的阶段和离开的阶段是一样的状态*/
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+
+    /*进入过渡和离开的过渡阶段的时间是一样的*/
+    .fade-leave-active, .fade-enter-active {
+      transition: all 1s linear;
+    }
+
+    /*进入完成的状态和离开初始的状态是也一样的,这个也是默认的状态*/
+    .fade-enter-to, .fade-leave {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+  </style>
+</head>
+<body>
+<div id="app">
+  <button @click="isShow=!isShow">显示隐藏的切换</button>
+  <transition name="fade">
+    <p v-if="isShow">hello</p>
+  </transition>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {isShow: false},
+  });
+</script>
+
+</body>
+</html>

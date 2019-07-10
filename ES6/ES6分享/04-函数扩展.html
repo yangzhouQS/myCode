@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">点击测试</button>
+<script type="text/javascript">
+  //1 - 函数的默认值
+  // ES5模拟函数参数默认值
+  function print(hello, word) {
+    console.log(word);
+    word = word || "word 1";
+    console.log(hello, word);
+  }
+
+  print('hello', '');
+
+  function print2(hello, word = 'word 2') {
+    console.log(hello, word);
+  }
+
+  print2('hello', undefined)
+
+  //2 - 剩余运算符,代替arguments
+  function fn(a, b, ...args) {
+    console.log('a = ', a);
+    console.log('b = ', b);
+    console.log('args = ', args);
+  }
+
+  fn(1, 2, 3, 4, 5, 6);
+
+  //3 - 箭头函数
+  let fn2 = (a, ...args) => {
+    console.log('a = ', a);
+    console.log('arg = ', args);
+    console.log(this);
+  }
+  fn2(1, 2, 3, 4, 5, 6);
+  /*
+  * 箭头函数存在的问题
+  *   1>arguments失效
+  *   2>不可以使用在构造函数
+  * */
+  let btn = document.getElementById('btn');
+
+  btn.onclick = function () {
+    let i = 100;
+    setTimeout(function () {
+      console.log(i);
+    }, 0);
+  };
+
+  //4 - 常见的this丢失问题
+  let obj = {
+    user: "李四",
+    age: 26,
+    say: function () {
+      let _this = this;
+      return function () {
+        console.log(this.user);//undefined
+      }
+      /*
+      * 解决this丢失
+      *   1>var _this=this;
+      *   2>.bind(this); //绑定外部的this
+      *   3>return () => this.age;//使用箭头函数解决this丢失
+      * */
+    },
+    sayHi() {
+      console.log(this);
+      return () => {
+        console.log(this);
+      }
+    }
+  };
+  obj.say()();
+  obj.sayHi()();
+
+
+  /*
+  * MDN箭头函数地址:
+  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+  * */
+  /*
+  js实现异步操作常见方式
+  setTimeout()
+  setInterval()
+  callback()
+  事件的发布与订阅
+  click
+  */
+</script>
+
+</body>
+</html>

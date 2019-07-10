@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>构造函数</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  //1.构造函数，创建实例的模板
+  function Person(name, age, hobby) {
+    this.name = name;
+    this.age = age;
+    this.hobby = hobby;
+    this.getName = function () {
+      console.log(this.name);
+    }
+  }
+
+  //2.根据构造函数进行初始化生成的实例
+  let p1 = new Person('Jack', '26岁', 'Code');//true
+  let p2 = new Person("tom", '32岁', 'Docker and javascript');//true
+
+  //3.p1和p2都是实例，这两个实例都有一个 constructor （构造函数）属性，该属性（是一个指针）指向 Person。
+  console.log(p1.constructor === Person);
+  console.log(p2.constructor === Person);
+  console.log(p1);
+  /*
+  两个概念：构造函数和实例
+      p1和p2都是构造函数Person的实例
+      实例的构造函数属性（constructor）指向构造函数。
+  */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>插槽</title><style type="text/css"> * {margin: 0;padding: 0;}  #app {width: 1200px;margin: 30px auto;overflow: hidden;}  #app .nav {float: left;line-height: 30px;padding: 5px 15px;}</style><script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <global-compontent>首页</global-compontent>
+  <global-compontent>互联网开发</global-compontent>
+  <global-compontent>智能未来</global-compontent>
+  <global-compontent>物联网</global-compontent>
+  <global-compontent>人工智能</global-compontent>
+  <global-compontent>科技未来</global-compontent>
+</div>
+<script>
+  Vue.component('global-compontent', {
+    template: `<div class="nav"><slot></slot></div>`
+  });//全局组件的注册
+  let vm = new Vue({
+    el: "#app",
+  });
+</script>
+</body>
+</html>

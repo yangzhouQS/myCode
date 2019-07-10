@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li.item {
+      color: red;
+    }
+  </style>
+  <script src="snabbdom-master/dist/snabbdom.js"></script>
+  <script src="snabbdom-master/dist/snabbdom-class.js"></script>
+  <script src="snabbdom-master/dist/snabbdom-props.js"></script>
+  <script src="snabbdom-master/dist/snabbdom-style.js"></script>
+  <script src="snabbdom-master/dist/snabbdom-eventlisteners.js"></script>
+  <script src="snabbdom-master/dist/h.js"></script>
+</head>
+<body>
+<div id="app">
+</div>
+<button id="btn-change">修改测试</button>
+
+<script type="text/javascript">
+  let app = document.getElementById('app');
+  let btn = document.getElementById('btn-change');
+
+  //定义path
+  let path = snabbdom.init([
+    snabbdom_class,
+    snabbdom_props,
+    snabbdom_style,
+    snabbdom_eventlisteners
+  ]);
+
+  //定义h
+  let h = snabbdom.h;
+  //生成vnode
+  let vnode = h('ul#list', {}, [
+    h('li.item', {}, 'item 1'),
+    h('li.item', {}, 'item 2'),
+  ]);
+  path(app, vnode);
+
+  btn.addEventListener('click', function () {
+    //创建新的vnode
+    let newVnode = h('ul#list', {}, [
+      h('li.item', {}, 'item 1'),
+      h('li.item', {}, 'item 测试'),
+      h('li.item', {}, 'item B')
+    ]);
+    //path第一个参数接受旧的vnode,第二个参数接受新的vnode
+    //内部通过算法进行差异化渲染
+    path(vnode, newVnode);
+  });
+</script>
+
+</body>
+</html>

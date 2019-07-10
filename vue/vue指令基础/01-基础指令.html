@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="vue.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <p v-text="str"></p>
+  <p v-html="str"></p>
+  <p>{{n}}</p>
+  <input type="text" v-model="n" title="">
+  <hr>
+  <ul>
+    <li v-for="(item , index) in user">{{item}}</li>
+  </ul>
+  <hr>
+  <div>
+    <ul v-for="(item,key) in person">
+      <li>{{item.name}}</li>
+      <li>{{item.age}}</li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      n: 1000,
+      str: '<h1>hello</h1>',
+      user: ['李宁', '乔丹', '科比', '李小鹏'],
+      person: [
+        {name: "李四", age: 26},
+        {name: "Tom", age: 25},
+        {name: "alise", age: 21}
+      ]
+    },
+    methods: {}
+  });
+</script>
+</body>
+</html>

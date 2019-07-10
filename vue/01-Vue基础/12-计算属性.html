@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <p>翻转字符串:{{msg.split('').reverse().join('')}}</p>
+  <p>计算属性翻转字符串:{{reverseMsg}}</p>
+  <p>nowDate{{nowDate}}</p>
+
+  <p>
+    <input type="text" v-model="a"> + <input type="text" v-model="b"> = <input type="text" v-model="result">
+  </p>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      msg: "helloword",
+      nowTime: null,
+      a: 0,
+      b: 0
+    },
+    computed: {
+      //计算属性,不可以在data里面重复出现
+      reverseMsg(){
+        return this.msg.split('').reverse().join('');
+      },
+      nowDate(){
+        return Date.now();
+      },
+      result: {
+        //只有依赖的数据发生改变时才会重新计算,数据不变化就会使用上一次缓存的数据进行展示
+        get(){
+          return Number(this.a) + Number(this.b);
+        }
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

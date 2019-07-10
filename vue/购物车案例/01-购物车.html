@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <link rel="stylesheet" href="../src/bootstrap/css/bootstrap.css">
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript" src="../src/axios.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    caption {
+      text-align: center;
+    }
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn:active.focus,
+    .btn.active.focus {
+      outline: none;
+    }
+
+    table.table tbody tr td {
+      vertical-align: middle;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="app">
+  <div class="row">
+    <table class="table table-bordered table-responsive  table-hover">
+      <caption><span class="h1 text-center text-danger">购物车</span></caption>
+      <thead>
+      <th><label>全选 <input type="checkbox" v-model="isAll" @change="getSelectAll"></label></th>
+      <th>商品</th>
+      <th>单价</th>
+      <th>数量</th>
+      <th>小计</th>
+      <th>操作</th>
+      </thead>
+      <tbody>
+      <tr v-for="(item,index) in products">
+        <td><input type="checkbox" v-model="item.isSelected" @change="check"></td>
+        <td style="text-align: left">
+          <img :src="item.productCover" width="100" alt="">
+          {{item.productName}}
+        </td>
+        <td>￥{{item.productPrice}}</td>
+        <td><input type="number" min="1" v-model="item.productCount" value="1"></td>
+        <td>￥ {{item.productPrice*item.productCount|toFixed(2)}}</td>
+        <td>
+          <button @click="removeProduct(index)" class="btn btn-danger btn-sm">删除</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6">总价格 ￥<span style="color: red">{{sum()|toFixed(2)}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    created(){//钩子函数,生命周期函数,this是当前的实例
+      //初始完成就会调用钩子函数
+      this.getDate();//请求数据
+    },
+    data: {
+      products: [],
+      isAll: false
+    },
+    filters: {
+      toFixed(target, n){
+        return Number(target.toFixed(n));
+      }
+    },
+    methods: {
+      //获取数据
+      getDate2(){
+        axios.get('carts.json').then(res => {
+          this.products = res.data;
+          console.log(res.data);
+        });
+      },
+      async getDate(){
+        this.products = (await axios.get('carts.json')).data;
+        console.log(this.products);
+      },
+      //点击全选时,下面的选中状态和自己保持一致
+      getSelectAll(){
+        this.products.forEach(item => item.isSelected = this.isAll)
+      },
+      check(){
+        this.isAll = this.products.every(x => x.isSelected);
+      },
+      //删除数组的某一项
+      removeProduct(index){
+        this.products.splice(index, 1);
+      },
+      //计算被选中商品的价格
+      sum(){
+        let total = 0;
+        this.products.forEach(item => {
+          if (item.isSelected) {
+            total += item.productPrice * item.productCount;
+          }
+        });
+        return total;
+      }
+    }
+  });
+</script>
+</body>
+</html>

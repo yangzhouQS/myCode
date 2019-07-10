@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--<label><input type="checkbox" value="apple" v-model="isCheck"> apple</label>-->
+  <!--
+  checkbox中有v-model后,checked属性失效
+  -->
+
+  <!--
+  实现多选需要将v-model绑定到数组上,数组存取的是input对应的value的值,没有value属性时存取的null
+  -->
+  <label><input type="checkbox" value="banner" v-model="arr"> banner</label>
+  <label><input type="checkbox" value="banner2" v-model="arr"> banner2</label>
+  <label><input type="checkbox" value="banner3" v-model="arr"> banner3</label>
+  <hr>
+  <label><input type="checkbox" value="banner" v-model="arr" @change="changeOne"> banner</label>
+  <label><input type="checkbox" value="banner2" v-model="arr" @change="changeOne"> banner2</label>
+  <label><input type="checkbox" value="banner3" v-model="arr" @change="changeOne"> banner3</label>
+  <label><input type="checkbox" value="all" v-model="isCheck" @change="changeAll"> 全选</label>
+
+  <p>{{arr.join(' - ')}}</p> <!--数组转换为字符串输出-->
+  <p>{{arr}}</p>
+  <ul>
+    <li v-for="(item , index) in arr">{{item}}</li>
+  </ul>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      isCheck: false,
+      arr: []
+    },
+    methods: {
+      changeAll(){
+        //全选  arr=[ "banner", "banner2", "banner3" ]
+        if (this.isCheck) {
+          this.arr = ["banner", "banner2", "banner3"];
+        } else {
+          this.arr = [];
+        }
+        //三元表达式的书写方式
+        //this.arr = this.isCheck ? ["banner", "banner2", "banner3"] : [];
+      },
+      changeOne(){
+        //动态的修改isCheck的值
+        this.isCheck = this.arr.length === 3;//数组的长度为3是需要让全选按钮选中
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p v-if="name">{{name}}</p>
+  <p v-if="!name">我是隐藏的不会显示的</p>
+  <div>
+    <p v-if="name === 'tom'">欢迎tom</p>
+    <p v-else-if="name === 'libai'">欢迎李白</p>
+    <p v-else>死啦死啦</p>
+  </div>
+  <!--v-for循环-->
+  <ul v-for="(value,index) in frieds">
+    <li>{{index}} - {{value}}</li>
+  </ul>
+  <!--v-on:绑定事件-->
+  <button v-on:click="fn">点击试一下</button>
+  <button @click="fn">省略写法绑定事件</button>
+  <!--v-model:双向数据绑定-->
+  <p><input type="text" v-model="n"> <span>n = {{n}}</span></p>
+  <!--v-once:初始的时候渲染一次以后数据变化时不会发生变化的-->
+  <p v-once>{{n}}</p>
+  <!--@click.stop:阻止冒泡行为-->
+  <!--@click.prevent:阻止默认行为-->
+  <a href="http://www.baidu.com" @click.stop="fn">去百度</a>
+  <a href="http://www.baidu.com" @click.prevent="fn">我是不会去百度</a>
+
+</div>
+
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      name: "libai",
+      age: 26,
+      frieds: ['tom', '王五', '赵六'],
+      strHTML: "<p>插值表达式插入的标签</p>",
+      redClass: 'red',
+      n: 3
+    },
+    methods: {
+      fn() {
+        alert("fn");
+      },
+    }
+
+  });
+  /*
+  * v-if:条件判断
+  * v-else/v-else-if
+  * v-for:循环遍历(遍历对象/遍历数组)
+  * v-on:绑定事件,事件处理函数写在methods中
+  * v-model:双向数据绑定
+  * v-once:初始的时候渲染一次以后数据变化时不会发生变化的
+  * 修饰符
+  *   @click.stop:防止冒泡
+  *   @click.prevent:阻止默认行为
+  */
+</script>
+
+</body>
+</html>

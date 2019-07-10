@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="mui/css/mui.css">
+  <script src="mui/js/mui.min.js"></script>
+  <script src="zepto/zepto.min.js"></script>
+</head>
+<body>
+<div class="mui-card-content">
+  <ul class="mui-table-view">
+    <li class="mui-table-view-cell mui-collapse mui-active">
+      <a class="mui-navigate-right" href="#">表单</a>
+      <div class="mui-collapse-content">
+        <form class="mui-input-group">
+          <div class="mui-input-row">
+            <label>Input</label>
+            <input type="text" placeholder="普通输入框">
+          </div>
+          <div class="mui-input-row">
+            <label>Input</label>
+            <input type="text" class="mui-input-clear" placeholder="带清除按钮的输入框" data-input-clear="10"><span
+              class="mui-icon mui-icon-clear mui-hidden"></span>
+          </div>
+
+          <div class="mui-input-row mui-plus-visible">
+            <label>Input</label>
+            <input type="text" class="mui-input-speech mui-input-clear" placeholder="语音输入" data-input-clear="11"
+                   data-input-speech="11"><span class="mui-icon mui-icon-clear mui-hidden"></span><span
+              class="mui-icon mui-icon-speech"></span>
+          </div>
+          <div class="mui-button-row">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">确认</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+          </div>
+        </form>
+      </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+      <a class="mui-navigate-right" href="#">面板2</a>
+      <div class="mui-collapse-content">
+        <p style="margin-bottom:0 !important">面板2子内容</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script type="text/javascript">
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  let xhr = new XMLHttpRequest();
+  xhr.open('get', 'data.json?id=10086&name=kebe');
+  //设置请求的头,不可以出现中文,必须在open之后
+  xhr.setRequestHeader('xianjs', '#@#$%^&*');
+  xhr.onreadystatechange = () => {
+    //使用正则判断,200 -- 300请求成功的
+    /*if (/^(2|3)\d{2}$/.test(xhr.status)) {
+      return null;
+    }*/
+    //获取响应头的时间
+    if (xhr.readyState === 2) {
+      let time = xhr.getResponseHeader('date');
+      console.log("time = ", time);//获取的是格林尼治时间字符串
+      console.log(new Date(time));//转换为北京时间
+      let d = new Date(time);
+    }
+    if (xhr.status === 200 && xhr.readyState === 4) {
+      console.log(JSON.parse(xhr.responseText));
+    }
+  };
+  xhr.send(/*JSON.stringify({id: 10086, name: "kebe"})*/ null);
+  //服务器传递json格式字符串
+</script>
+
+</body>
+</html>

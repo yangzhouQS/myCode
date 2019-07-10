@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--使用全局创建的组件-->
+  <mycomponent></mycomponent>
+
+  <!--第二种使用Vue.extend()创建的全局组件-->
+  <didi-component></didi-component>
+
+  <!--使用vue实例创建的组件-->
+  <!--<my-component></my-component>-->
+
+  <local-component></local-component>
+</div>
+<script type="text/javascript">
+  /*
+  * 注册组件就是利用Vue.component()方法，先传入一个自定义组件的名字，然后传入这个组件的配置。
+  * 使用Vue.component()创建的组件在所有的实例中都是可以使用的
+  * */
+  Vue.component('mycomponent', {
+    template: `<div>我的第一个自定义组件 <span style="color: red">{{msg}}</span></div>`,
+    data() {
+      return {
+        msg: 'hello word'
+      }
+    }
+  });
+
+  //第二种注册全局组件的方法
+  //注册
+  let DIDIComponent = Vue.extend({
+    template: `<div>hello {{msg}}</div>`,
+    data() {
+      return {
+        msg: 'hello word'
+      }
+    }
+  });
+  //创建为全局的组件
+  Vue.component('didi-component', DIDIComponent);
+
+  let Child = Vue.extend({
+    template: `<div>Child局部组件的创建</div>`,
+    replace: true
+  });
+  let Parent = Vue.extend({
+    template: `<div>Parent局部组件... <child></child></div>`,
+    //好像是可以嵌套的
+    components: {
+      'child': Child
+    }
+  });
+  new Vue({
+    el: "#app",
+    data: {},
+    //直接使用Vue.component()创建的组件，所有的Vue实例都可以使用。还可以在某个Vue实例中注册只有自己能使用的组件。
+    components: {
+      //在vue实例中创建组件
+      /*'my-component': {
+        template: `<div>这是一个局部的自定义组件，只能在当前Vue实例中使用</div>`
+      },*/
+      //在实例中创建注册的组件
+      'local-component': Parent
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Class 与 Style 绑定</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <div v-bind:class="myUserName"></div>
+  <div :class="myUserName"></div>
+  <a :href="myUrl">回家</a>
+  <!--
+  v-bind:可以省略的
+  -->
+  <p>myUrl : {{myUrl}}</p>
+  <input type="text" v-for="item in db" :value="item">
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      myUserName: 'xianjs',
+      myUrl: '/userId',
+      db: ['mysql', 'oracle', 'redis', 'mongodb']
+    }
+  });
+
+</script>
+
+</body>
+</html>

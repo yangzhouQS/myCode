@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+<script>
+  var dtd = $.Deferred(); // 新建一个deferred对象
+
+  var wait = function (dtd) {
+
+    var tasks = function () {
+      alert("执行完毕！");
+      dtd.resolve(321); // 改变deferred对象的执行状态
+    };
+
+    setTimeout(tasks, 100);
+
+    return dtd;
+  };
+  $.when(wait(dtd))
+    .done(function () {
+      alert("哈哈，成功了！");
+    })
+    .fail(function () {
+      alert("出错啦！");
+    });
+  $.when(wait(dtd))
+    .done(res => {
+      console.log(res);
+    }).fail(function () {
+    console.log("arguments");
+  });
+</script>
+</body>
+</html>

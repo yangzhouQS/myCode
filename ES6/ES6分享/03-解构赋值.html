@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /*
+  * 解构赋值
+  * 数组的解构赋值
+  *
+  * */
+
+  /*
+  * 1 - 数组解构赋值
+  *     默认值
+  *     丢弃多余参数
+  * */
+
+
+  /*let a = 1;
+  let b = 2;
+  let c = 3;*/
+  let [a, , c = 5] = [1, 2, undefined];
+  console.log(a, c);
+
+  //2 - ES7的对象解构
+  let obj = {name: "李四", age: 26};
+  let {name, age} = obj;
+  console.log(name, age);
+
+  //3 - 字符串的解构
+  let [s1, s2, s3, s4, s5] = 'hello'
+  console.log(s1, s2, s3, s4, s5);
+
+  //4 - 展开运算符
+  let arr = [1, 2, 3, 4, 5];
+  console.log(...arr);
+
+  //5 - 求数组的最大值
+  /*
+  * 1>循环假设法
+  * 2>使用Math属数学函数 apply展开数组
+  * 3>ES6展开运算符
+  * 4>eval求数组最值
+  * 5>排序法
+  * */
+
+  /*console.log(Math.max.apply(undefined, arr));
+  console.log(eval("Math.min(" + arr.toString() + ")"));
+  console.log(eval("Math.max(" + arr.join() + ")"));
+  arr.sort((a, b) => a - b);
+  console.log(arr[arr.length - 1]);
+  console.log(Math.max(...arr));*/
+</script>
+
+</body>
+</html>

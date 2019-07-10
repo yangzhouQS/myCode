@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="">
+  <title>Title</title>
+  <base href="">
+  <noscript></noscript>
+</head>
+<body>
+<div>
+  <!--<noframes></noframes>-->
+  <form action=""><input type="text"></form>
+  <div>div</div>
+  <p>p</p>
+  <abbr></abbr>
+  <u></u>
+  <s></s>
+  <del></del>
+  <span></span>
+</div>
+<script>
+  let allTag = document.getElementsByTagName('*');
+  console.log(new Set([...allTag].map(x => x.tagName.toLowerCase())).size);
+</script>
+</body>
+</html>

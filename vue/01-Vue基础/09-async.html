@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+  //async:将函数转换为一个Promise对象
+  let f = async function fn() {
+    //throw new Error("sorry");
+    return 1;
+  };
+  //  console.dir(f);//返回的是一个函数
+  //async ƒ fn()
+  console.log(f());//Promise {<resolved>: 1}
+  f().then(data => {
+    console.log(data);
+  }).catch(e => {
+    console.log(e.message);
+  });
+  /*
+   * await后面跟着一个Promise对象
+   *   如果后面不是Promise对象,会将其变成一个resolve的promise值作为resolve的参数
+   *   await的结果就是resolve或者reject的参数
+   *   await异步执行完成之后再去执行后面的代码
+   *
+   * */
+
+  //是promise的语法糖
+  let f2 = async function () {
+    let a = await new Promise((resolve, reject) => {
+      //reject('失败啦...')    //失败态
+      setTimeout(() => {
+        resolve("1008611");//成功态
+      }, 500);
+    });
+    console.log(a);
+  };
+  f2();
+  //原生的Promise操作
+  let p = new Promise((resolve, reject) => {
+    if (Math.random() > 0.5) {
+      resolve("成功");
+    } else {
+      reject("失败...");
+    }
+  });
+  p.then(data => {
+    console.log(data);
+  }).catch(err => {
+    console.log(err);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="jquery-3.2.1.js"></script>
+  <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<div class="container">
+  <table class="table table-responsive table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>地址</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <button>修改小明</button>
+</div>
+
+<script type="text/javascript">
+  let data = [
+    {
+      "name": "Tom",
+      "age": "26",
+      "address": "美国"
+    },
+    {
+      "name": "jack",
+      "age": "26",
+      "address": "法国"
+    },
+    {
+      "name": "xiaoMing",
+      "age": "26",
+      "address": "中国"
+    }
+  ];
+
+  function render(data) {
+    $("tbody").empty();
+    let str = [];
+    for (const dataKey in data) {
+      let cur = data[dataKey];
+      str.push(`<tr>
+          <td>${cur['name']}</td>
+          <td>${cur['age']}</td>
+          <td>${cur['address']}</td>
+        </tr>`)
+    }
+    $("tbody").append(str.join(''))
+  }
+
+  $("button").on('click', function () {
+    data[2].age = 36;
+    data[2].address = '中国东北' + Date.now();
+    render(data);
+  });
+  render(data);
+</script>
+
+</body>
+</html>

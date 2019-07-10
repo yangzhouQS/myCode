@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--
+  v-text:不存在闪烁的问题;
+  但是v-text会替换内容;
+  {{}}表达式不会替换标签里面原来的内容;
+  v-text:不会渲染html代码
+  -->
+  <!--
+  v-html可以解析html代码的字符串
+  -->
+  <p v-text="msg">msg</p>
+  <p v-text="html"></p>
+  <p v-html="html"></p>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      msg: "HelloWord",
+      html: "<h1>世界你好.....</h1>"
+    }
+  });
+</script>
+
+</body>
+</html>

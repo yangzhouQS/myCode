@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="box">
+  <button>button1</button>
+  <button>button2</button>
+  <button>button3</button>
+  <button>button4</button>
+  <button>button5</button>
+</div>
+<script>
+  var oBox = document.getElementById('box');
+  var oBtn = oBox.getElementsByTagName('button');
+  /*for (var i = 0, len = oBtn.length; i < len; i++) {
+    oBtn[i].onclick = function () {
+      console.log(i);
+    };
+  }*/
+  /*
+  为啥不行呀?
+    所以是的事件绑定都是异步编程(绑定的时候并没有执行),当触发点击事件的时候,执行方法的时候,循环早已结束,i已经为5
+
+  同步和异步
+    同步:js当前这个任务没有完成,下面的任务就不会执行,只有等待当前任务彻底完成才会值下面的任务
+    异步:JS当前任务没有完成,需要等待一会完成,此时可以继续执行下面的任务
+  */
+  //1.自定义属性解决
+  /*for (var i = 0, len = oBtn.length; i < len; i++) {
+    oBtn[i].index = i;
+    oBtn[i].onclick = function () {
+      console.log(this.index);
+    };
+  }*/
+  //2.闭包
+  /*for (var i = 0, len = oBtn.length; i < len; i++) {
+    (function (i) {//每次都会创建一个不销毁的私有作用域
+      oBtn[i].onclick = function () {
+        console.log(i);//在当前作用域下找i没有就到上层的作用域去查找
+      };
+    })(i);
+  }*/
+  /*
+    for (var i = 0, len = oBtn.length; i < len; i++) {
+      oBtn[i].onclick = (function (i) {
+        return function () {
+          console.log(i);
+        };
+      })(i);
+    }*/
+  for (let i = 0, len = oBtn.length; i < len; i++) {
+    oBtn[i].onclick = function () {
+      console.log(i);//在当前作用域下找i没有就到上层的作用域去查找
+    };
+  }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css"> * {
+    margin: 0;
+    padding: 0;
+  }</style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app"><!--拿到父组件方法的引用-->
+  <com1 @func="show"></com1>
+</div>
+<script type="text/javascript"> let vm = new Vue({
+  el: "#app", data: {msg: "xianjs 父组件的方法"}, methods: {
+    show(a) {
+      console.log('父组件的show方法 , 子组件的数据:', a);
+    }
+  }, components: {
+    com1: {
+      template: `<div> <button @click="pClick">触发父组件的方法</button> </div>`, data() {
+        return {msg: '子组件的数据'}
+      }, methods: {
+        pClick() {
+          this.$emit('func', this.msg);
+          console.log('arguments');
+        }
+      },
+    }
+  }
+});</script>
+</body>
+</html>

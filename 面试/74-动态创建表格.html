@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  onload = function () {
+
+// 需求, 创建一个 4 * 3 的一个表格 table
+    function c(tagName) {
+      return document.createElement(tagName);
+    }
+
+    var table = c('table');
+    var tbody = c('tbody');
+    table.appendChild(tbody);
+    for (var i = 0; i < 4; i++) {
+      var tr = c('tr');
+      for (var j = 0; j < 3; j++) {
+        var td = c('td');
+// 在 td 中放置文本
+        var txt = document.createTextNode(' ');
+        td.appendChild(txt);
+        tr.appendChild(td);
+
+        td.width = 200;
+        td.height = 50;
+      }
+      tbody.appendChild(tr);
+    }
+
+    table.setAttribute('border', '1');
+
+    document.body.appendChild(table);
+
+
+  };
+
+  // 作业:
+  var data = [
+    {num: 1, name: '张三', age: 19, gender: '男'},
+    {num: 2, name: '张三', age: 19, gender: '男'},
+    {num: 3, name: '张三', age: 19, gender: '男'},
+    {num: 4, name: '张三', age: 19, gender: '男'},
+    {num: 5, name: '张三', age: 19, gender: '男'}
+  ];
+
+</script>
+<script>
+  Array.prototype.myUniq = function () {
+    var obj = {};
+    for (var i = 0, len = this.length; i < len; i++) {
+      var cur = this[i];
+      if (typeof obj[cur] !== 'undefined') {//对象的属性重复
+        this[i] = this[this.length - 1];
+        i--;
+        this.length--;
+      }
+      obj[cur] = cur;
+    }
+    obj = null;
+    return this;
+  };
+  var arr = [1, 2, 3, 1, 2];
+  console.log(arr.myUniq());
+</script>
+</body>
+< /html>;

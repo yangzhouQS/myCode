@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "mongodb": "^3.2.7"
+  },
+  "dependencies": {
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.8"
+  }
+}

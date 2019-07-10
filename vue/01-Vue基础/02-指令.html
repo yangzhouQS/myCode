@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--
+  v-model="a":实现双向数据的绑定
+  v-once="a":初始的时候渲染一次以后数据变化时不会发生变化的
+  v-text="txt":不可以解析显示标签
+  v-html="txt":可以解析渲染html标签
+  -->
+  <input type="text" v-model="a">
+  <p>a = {{a}}</p>
+  <p>a = <span v-once>{{a}}</span></p>
+  <p v-text="txt"></p>
+  <p v-html="txt"></p>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      a: 10,
+      txt: "<h1>世界好吗!!!</h1>"
+    }
+  });
+</script>
+
+</body>
+</html>

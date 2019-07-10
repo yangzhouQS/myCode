@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #F2F4F6;
+}
+.pic img {
+  width: 100%;
+  height: 100%;
+}
+.info {
+  padding: 0.48rem;
+  background-color: #fff;
+  border-bottom: 0.02666667rem solid #E7E8E9;
+  margin-bottom: 0.42666667rem;
+}
+.info h1 {
+  font-size: 0.37333333rem;
+  font-weight: 700;
+  color: #07111b;
+  margin-bottom: 0.21333333rem;
+}
+.info p {
+  font-size: 0.26666667rem;
+  color: #AEB2B7;
+  line-height: 0.26666667rem;
+}
+.info .price {
+  margin: 0.48rem 0;
+}
+.info .price span {
+  line-height: 0.64rem;
+}
+.info .price span:first-child {
+  font-size: 0.26666667rem;
+  font-weight: 700;
+  color: #f01414;
+}
+.info .price span:nth-child(2) {
+  font-size: 0.37333333rem;
+  font-weight: 700;
+  color: #f01414;
+}
+.info .price span:nth-child(3) {
+  font-size: 0.37333333rem;
+  font-weight: 700;
+  color: #93999f;
+  text-decoration: line-through;
+}
+.info .price button {
+  outline: none;
+  border: none;
+  float: right;
+  width: 1.97333333rem;
+  height: 0.64rem;
+  border-radius: 0.32rem;
+  background: #009FDB;
+  color: #fff;
+  font-size: 0.26666667rem;
+  line-height: 0.32rem;
+}
+/*商品的介绍*/
+.introduce {
+  border-top: 0.02666667rem solid #E7E8E9;
+  border-bottom: 0.02666667rem solid #E7E8E9;
+  padding: 0.48rem;
+  background-color: #fff;
+  margin-bottom: 0.42666667rem;
+}
+.introduce h2 {
+  color: #06101A;
+  font-size: 0.37333333rem;
+  font-family: "Microsoft YaHei", serif;
+  line-height: 0.37333333rem;
+  margin-bottom: 0.21333333rem;
+}
+.introduce p {
+  font-size: 0.32rem;
+  font-weight: 200;
+  color: #4C545C;
+  line-height: 0.64rem;
+}
+/*商品皮甲 */
+.assess {
+  border-top: 0.02666667rem solid #E7E8E9;
+  border-bottom: 0.02666667rem solid #E7E8E9;
+  padding: 0.48rem;
+  background-color: #fff;
+}
+.assess h2 {
+  color: #06101A;
+  font-size: 0.37333333rem;
+  font-family: "Microsoft YaHei", serif;
+  line-height: 0.37333333rem;
+}
+.assess .tips {
+  margin: 0.48rem 0;
+  overflow: hidden;
+}
+.assess .tips div {
+  width: 1.6rem;
+  height: 0.85333333rem;
+  float: left;
+  margin-right: 0.21333333rem;
+  font-size: 0.32rem;
+  line-height: 0.85333333rem;
+  text-align: center;
+  color: #4C545C;
+  border-radius: 2px;
+}
+.assess .tips div span {
+  font-size: 0.21333333rem;
+}
+.assess .tips div:first-child {
+  color: #fff;
+  background-color: #009FDB;
+}
+.assess .tips div:nth-child(2) {
+  background-color: #CCECF8;
+}
+.assess .tips div:nth-child(3) {
+  background-color: #E9EAEC;
+}
+.assess p {
+  border-top: 1px solid #E7E8E9;
+  line-height: 1.29333333rem;
+  padding-left: 0.66666667rem;
+  position: relative;
+  font-size: 0.32rem;
+  color: #93999F;
+}
+.assess p:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 0.53333333rem;
+  height: 0.53333333rem;
+  border-radius: 50%;
+  background-color: #bebebe;
+}
+/*# sourceMappingURL=index.css.map */

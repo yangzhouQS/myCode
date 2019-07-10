@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="../src/angular.js"></script>
+	<link rel="stylesheet" href="../src/bootstrap/css/bootstrap.css">
+</head>
+<style>
+	.red {
+		color: red;
+	}
+</style>
+<body ng-app="app">
+<div ng-controller="myCtr">
+	<p ng-if="flag">第一个标签</p>
+	<p ng-if="!flag">第二个标签</p>
+	<ul>
+		<!--index:从0开始的索引,对象的话为对象的属性
+		row:数组的值,对象的话为对象的属性值
+		$index:索引
+		$first:第一个
+		$last:最后一个
+		$Middle:中间的
+		$odd:奇数
+		$even:偶数
+		-->
+		<li ng-repeat="item in list">{{ item }} -
+			{{ $index }} -
+			{{ $first }} -
+			{{ $last }} -
+			{{ $middle }} -
+			{{ $odd }} -
+			{{ $even }}
+		</li>
+		<li>{{ list }}</li>
+	</ul>
+	<div>
+		<input type="text" ng-model="msg">
+		<!--
+		ng-switch :外层的包裹,on指定判断的数据
+		ng-switch-default:默认值
+		ng-switch-when:指定的值
+		-->
+		<div ng-switch on="msg">
+			<div ng-switch-default="">默认的页面展示</div>
+			<div ng-switch-when="page1">第一个页面</div>
+			<div ng-switch-when="page2">第二个页面</div>
+		</div>
+		</p>
+	</div>
+</div>
+<script>
+  let app = angular.module('app', []);
+  app.controller('myCtr', ['$scope', function ($scope) {
+    $scope.flag = true;
+    $scope.list = ['a', 'b', 'c', 'd'];
+  }]);
+</script>
+</body>
+</html>

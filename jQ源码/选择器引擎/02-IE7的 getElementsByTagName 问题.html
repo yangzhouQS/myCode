@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+<script>
+  //J. Max Wilson
+  if (/msie/i.test (navigator.userAgent)) {//only override IE
+    document.nativeGetElementById = document.getElementById;
+    document.getElementById = function(id){
+      var elem = document.nativeGetElementById(id);
+      if(elem){//IE5
+        if(elem.id == id){
+          return elem;
+        }else{//IE4
+          for(var i=1;i<document.all[id].length;i++){
+            if(document.all[id][i].id == id){
+              return document.all[id][i];
+            }
+          }
+        }
+      }
+      return null;
+    };
+  }
+  //Dean Edwards
+  function getElementsByTagName(node, tagName) {
+    var elements = [], i = 0, anyTag = tagName === "*", next = node.firstChild;
+    while ((node = next)) {
+      if (anyTag ? node.nodeType === 1 : node.nodeName === tagName) elements[i++] = node;
+      next = node.firstChild || node.nextSibling;
+      while (!next && (node = node.parentNode)) next = node.nextSibling;
+    }
+    return elements;
+  };
+</script>
+</body>
+</html>

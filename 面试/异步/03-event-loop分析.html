@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /*
+  * 定时器为异步代码块,定时的时间到了以后会先进入异步队列
+  * 同步代码块回先执行
+  * 同步代码块执行完毕,event-loop的轮询机制将异步任务队列的代码在主线程执行
+  * */
+  setTimeout(() => {
+    console.log(100);
+  });
+  console.log(200);
+</script>
+
+</body>
+</html>

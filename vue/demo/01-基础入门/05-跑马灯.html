@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <button @click="lang">浪起来</button>
+  <button @click="stop">低调一下吧</button>
+  <p v-text="xianjs"></p>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      xianjs: '哈哈套马的汉子@浪起来~~~',
+      timerID: null,
+    },
+    //绑定的事假书写在methods对象中
+    methods: {
+      lang() {
+        console.log(1);
+        if (this.timerID != null) return;
+        this.timerID = setInterval(() => {
+          //数组的形式操作
+          /*let arr = this.xianjs.split('');
+          arr.push(arr.shift());
+          return this.xianjs = arr.join('');*/
+          let start = this.xianjs.substring(0, 1);
+          let end = this.xianjs.substring(1);
+          console.log(end + start);
+          this.xianjs = end + start;
+        }, 100);
+      },
+      stop() {
+        clearInterval(this.timerID);
+        // this.xianjs = '哈哈套马的汉子@浪起来~~~';
+        this.timerID = null;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

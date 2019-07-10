@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+
+  </style>
+  <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script type="text/javascript">
+  let Header = {
+    template: `
+    <div>
+        <h1>子组件</h1>
+        <button @click="sonClick">点击改变父组件字体的大小</button>
+    </div>
+  `,
+    methods: {
+      sonClick() {
+        this.$emit('change-size', 1);
+      }
+    }
+  };
+  let App = {
+    template: `
+      <div>
+        <h2>父组件</h2>
+        <my-components v-on:change-size="changSize"></my-components>
+        <span :style="{fontSize:postFontSize+'em'}">父组件字体可以变大吗</span>
+      </div>
+    `,
+
+    data() {
+      return {
+        postFontSize: 1
+      }
+    },
+    methods: {
+      changSize(value) {
+        this.postFontSize += value;
+      }
+    }, //注册子组件
+    components: {
+      'my-components': Header,
+    },
+
+  };
+  new Vue({
+    el: "#app",
+    template: `<App></App>`,
+    components: {
+      App,
+    }
+  })
+</script>
+</body>
+</html>

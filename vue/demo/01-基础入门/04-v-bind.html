@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--v-model="name":双向数据绑定-->
+  <input type="text" v-model="name" placeholder="姓名" name="" id="">
+
+  <!--:title:动态绑定title属性,是v-bind:title='xianjs'的简写-->
+  <!--@click='say'绑定点击事件是,v-on='say'的简介方式-->
+  <button :title="xianjs" @click="say">点击事件</button>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      name: '',
+      xianjs: '点击一下试一试吧'
+    },
+    //绑定的事假书写在methods对象中
+    methods: {
+      say() {
+        alert(this.name)
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

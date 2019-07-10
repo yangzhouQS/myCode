@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  let obj = {
+    name: 'xianjs',
+    age: 26,
+    getName: function () {
+      console.log(this.name);
+    },
+    frides: ['tom', 'sam', 'jack', [1, 2, 3], {sayary: 0}],
+
+  };
+
+  function deepClone(obj, target) {
+    var tmp = [];
+    if (arguments.length === 0) return {};
+    target = target || {};
+
+    let isObject = function (target) {
+      return target !== null && typeof target == 'object';
+    };
+    let isFunction = function (target) {
+      return typeof target === 'function';
+    }
+    let isArray = function (target) {
+      return Object.prototype.toString.call(target) === '[object Array]';
+    };
+
+    /* console.log(isFunction(isArray));
+     console.log(isArray([]));
+     console.log(isObject(null));
+     console.log(isObject({}));*/
+    for (const key in obj) {
+      if (isArray(obj[key])) {
+        for (var i = 0, len = obj[key].length; i < len; i++) {
+          var cur = obj[key][i];
+          // tmp.push(cur);
+          if (isFunction(cur) || isObject(cur) || isArray(cur)) {
+            tmp.push(deepClone(cur));
+          } else {
+            tmp.push(cur);
+          }
+        }
+        target[key] = tmp;
+        tmp = null;
+      } else if (isObject(obj[key])) {
+        var o = {};
+        o = deepClone(obj)
+        target[key] = o;
+        o = {};
+      }
+    }
+    return target;
+  }
+
+  let o = deepClone(obj);
+  console.log('=======');
+  console.log(o);
+  o[0] = '666';
+  o[3] = 999;
+  o[4] = {xxx: 'xxxs'}
+  console.log(obj);
+
+</script>
+
+</body>
+</html>

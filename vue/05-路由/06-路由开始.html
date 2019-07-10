@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+  <script src="../src/axios.js"></script>
+  <script src="../src/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+  <!-- 很 low不使用了
+    <p>
+     <a href="#/home">home组件</a>
+     <a href="#/subpage">subpage组件</a>
+   </p>-->
+  <p>
+    <router-link to="home" tag="button">home</router-link>
+    <router-link to="subpage" tag="button">subpage</router-link>
+  </p>
+  <router-view></router-view>
+</div>
+<template id="home">
+  <p>home组件</p>
+</template>
+<template id="subpage">
+  <p>subpage组件</p>
+</template>
+<script type="text/javascript">
+  //1.自定义组件
+  let Home = {
+    template: '#home'
+  };
+  let SubPage = {
+    template: '#subpage'
+  };
+  //2.自定义路由
+  let routers = [
+    {path: '/', redirect: '/home'},
+    {path: '/home', component: Home},
+    {path: '/subpage', component: SubPage}
+  ];
+  //3.创建routers实例
+  let router = new VueRouter({
+    routes: routers
+  });
+  let vm = new Vue({
+    el: '#app',
+    data: {},
+    methods: {},
+    components: {},
+    //4.路由的挂载
+    router
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="../src/angular.js"></script>
+</head>
+<body ng-app="app">
+<div ng-controller="firstController">
+	<p> datatime = {{ datatime|formatDate }}</p>
+	<!--内置的日期过滤器-->
+	<p> datatime = {{ datatime|date:"yyyy-MM-dd HH:mm:ss" }}</p>
+</div>
+<script>
+  let app = angular.module('app', []);
+  app.controller('firstController', ['$scope', function ($scope) {
+    $scope.datatime = Date.now();
+  }]);
+  //自定义事件格式化的过滤器
+  app.filter('formatDate', function () {
+    return function (input) {
+      let t = new Date(input);
+      let Y = t.getFullYear();
+      let M = t.getMonth() + 1;
+      let D = t.getDate();
+      let h = t.getHours();
+      let m = t.getMinutes();
+      let s = t.getSeconds();
+      console.log(h, m, s);
+      return `${ Y }-${ M }-${ D } ${ h }-${ m }-${ s }`;
+    };
+  });
+</script>
+</body>
+</html>

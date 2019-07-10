@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  var obj = {
+    name: "Tom",
+    age: 26
+  };
+  Function.prototype.myBind = function () {
+    var _this = this;//fn
+  };
+  Function.prototype.myCall = function (context) {
+    var _this = this;//fn
+    var ary = [];//存储arguments
+    context = context || window;
+    for (let i = 1; i < arguments.length; i++) {
+      ary.push(arguments[i]);
+    }
+    _this.apply(context, ary);
+  };
+
+
+  Function.prototype.call2 = function (context) {
+    context = context || window;
+    context.fn = this;
+    var args = [];
+    for (var i = 1, len = arguments.length; i < len; i++) {
+      args.push('arguments[' + i + ']');
+    }
+    console.log(args);//["arguments[1]", "arguments[2]", "arguments[3]"]
+    var result = eval('context.fn(' + args + ')');
+    delete context.fn;
+
+    return result;
+  }
+
+  Function.prototype.call3 = function (context) {
+    //this->fn
+    context = context || window;
+    var ary = [];
+    for (var i = 1; i < arguments.length; i++) {
+      ary.push('arguments[' + i + ']');
+    }
+    // console.log(ary);//["arguments[1]", "arguments[2]", "arguments[3]"]
+
+    return eval('this(' + ary + ')');
+  };
+
+  function fn(a, b, c) {
+    console.log(a, b, c);
+    console.log(this);
+  }
+
+  fn.call3(obj, 1, 2, 3);
+
+  // fn.call(obj, 1, 2, 3);
+  // fn.myCall(obj, 1, 2, 3);
+
+</script>
+
+</body>
+</html>

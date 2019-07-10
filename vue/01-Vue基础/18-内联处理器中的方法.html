@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>内联处理器中的方法</title>
+  <script type="text/javascript" src="src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--
+  3 - 内联处理器中的方法
+  有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法,第二个参数就为要传递的形参
+  -->
+  <button v-on:click="print($event,'hello')">print</button>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      count: 0
+    },
+    methods: {
+      print(e, str) {
+        /*
+        * arguments[0]:为event事件监听使用,
+        * arguments[1]:为传递的参数
+        * */
+        console.log(arguments[1]);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

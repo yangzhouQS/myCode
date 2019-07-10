@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <link rel="stylesheet" href="src/animate.min.css">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <button @click="flag=!flag">显示隐藏</button>
+  <transition enter-active-class="animated bounceInLeft" leave-active-cliass="animated swing">
+    <div v-show="flag"><h1>学习架构</h1></div>
+  </transition>
+  <p></p>
+</div>
+<div id="top"></div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      flag: true,
+    }
+  });
+
+  let arr = [1, 2, 3, 4];
+</script>
+
+</body>
+</html>

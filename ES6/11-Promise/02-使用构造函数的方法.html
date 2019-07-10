@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  function runAsync() {
+    return new Promise((resolve, reject) => {
+      setTimeout(function () {
+        let i = Math.random();
+        if (i < 0.5) {
+          resolve(`神仙 ${i}`);
+        } else {
+          reject(`魔鬼 ${i}`);
+        }
+      }, 500);
+    });
+  }
+
+  //使用promise提供的方法
+  runAsync().then(data => {//返回数据
+    console.log(data);
+  }).catch(e => {//捕获异常
+    console.log(e);
+  })
+  //Uncaught (in promise)
+  /*
+  * Uncaught (in promise) 错误是指调用promise时报错,是由于第一条错误引发的后续错误,但是客户端没有catch住
+  * */
+
+
+</script>
+
+</body>
+</html>

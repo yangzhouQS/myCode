@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='zh_CN'>
+<head>
+	<meta charset='UTF-8'>
+	<title>Title</title>
+	<script src='../src/vue.js'></script>
+	<link rel='stylesheet' href='../src/bootstrap/css/bootstrap.css'>
+</head>
+<body>
+<div id='app' class='container'>
+	<!--子组件订阅父组件的parent方法-->
+	<panel type='primary' @say-title='parent'>
+		<div slot='title'>这是Vue的使用教程</div>
+		<div slot='content'>
+			<h1>内容区域</h1>
+			<p>属性传值</p>
+		</div>
+		<div slot='footer'>
+			<p>作者:xxx</p>
+			footer开始
+		</div>
+	</panel>
+</div>
+<template id='panel'>
+	<div class='panel' :class='[color]'>
+		<div class='panel-heading'>
+			<slot name='title'></slot>
+		</div>
+		<div class='panel-body'>
+			<slot name='content'></slot>
+		</div>
+		<div class='panel-footer'>
+			<slot name='footer'></slot>
+			<button @click='getTitle'> 获取标题</button>
+		</div>
+	</div>
+</template>
+<script>
+  let panel = {
+    template: '#panel',
+    computed: {
+      color() {
+        return 'panel-' + this.type;
+      }
+    },
+    props: {
+      type: {
+        type: [String],
+        default: 'default'
+      }
+    },
+    methods: {
+      getTitle() {//发布调用父组件的方法
+        this.$emit('say-title', 'xxx');
+      }
+    },
+  };
+  let vm = new Vue({
+    el: '#app',
+    data: { radio: 'home' },
+    components: { panel },
+    methods: {
+      parent(txt) {//父组件获取标题的方法
+        alert('标题 : ' + txt);
+      }
+    },
+  });
+</script>
+</body>
+</html>

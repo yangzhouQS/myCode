@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>
+    <input type="text" v-model="value">
+    <!--添加数据时触发的函数-->
+    <button @click="add">添加</button>
+  <ul v-for="(row,index) in books">
+    <li>
+      {{row}}
+      <button @click="del(index)">删除</button>
+      <!--一直监听点击事件-->
+    </li>
+  </ul>
+  </p>
+</div>
+
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      value: "",
+      books: ["降龙十八掌"],
+    },
+    methods: {
+      add() {
+        this.books.push(this.value);
+        this.value = "";
+      },
+      del(index) {
+        this.books.splice(index, 1);
+        console.log(index);
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /*
+  * 1.创建正则表达式
+  *   1.1 创建对象的方式创建正则表达式
+  *   1.2 正则模式放在两个斜杠之间
+  * 2.匹配测试:test()方法,返回值为布尔值
+  * 3.匹配字符集
+  *
+  *
+  * */
+
+  //1.创建正则表达式
+  let reg = new RegExp('abc');
+  let reg2 = /abc/;
+
+  //2.匹配测试
+  console.log(reg.test('abcd'));//true
+  console.log(reg2.test('abcder'));//true
+  //匹配以abc开头的字符串
+  console.log(/^abc/.test('acbcde'));//false
+
+
+</script>
+
+</body>
+</html>

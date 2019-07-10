@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /*
+  要求:编写一个函数，该函数将遍历整数列表，并在延迟3秒后打印每个元素的索引。
+
+    如果运行上面代码，3 秒延迟后你会看到，实际上每次打印输出是 4，而不是期望的 0，1，2，3 。
+
+    为了正确理解为什么会发生这种情况，了解为什么会在 JavaScript 中发生这种情况将非常有用，这正是面试官试图测试的内容。
+
+    原因是因为 setTimeout 函数创建了一个可以访问其外部作用域的函数（闭包），该作用域是包含索引 i 的循环。 经过 3 秒后，执行该函数并打印出 i 的值，该值在循环结束时为 4，因为它循环经过0,1,2,3,4并且循环最终停止在 4。
+
+
+
+  */
+  /*const arr = [10, 12, 15, 21];
+  for (var i = 0; i < arr.length; i++) {
+    setTimeout(function () {
+      //在循环中石油闭包.html?_ijt=9pcfpa5kldcj5mdvll4cst03er:27 The index of this number is: 4
+      console.log('The index of this number is: ' + i);
+    }, 3000);
+  }*/
+
+  //方法一
+  /*const arr = [10, 12, 15, 21];
+  for (var i = 0; i < arr.length; i++) {
+    setTimeout(function (i_local) {
+      return function () {
+        console.log('The index of this number is: ' + i_local);
+      }
+    }(i), 3000)
+  }*/
+  //方法2
+  const arr = [10, 12, 15, 21];
+  for (let i = 0; i < arr.length; i++) {
+    setTimeout(function () {
+      console.log('The index of this number is: ' + i);
+    }, 3000);
+  }
+
+</script>
+
+</body>
+</html>

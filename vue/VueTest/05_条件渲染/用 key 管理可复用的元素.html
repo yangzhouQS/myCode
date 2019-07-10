@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>08_条件渲染</title>
+</head>
+<body>
+<!--
+1. 条件渲染指令
+  v-if:dom的移除与替换
+  v-else
+  v-show
+2. 比较v-if与v-show
+  如果需要频繁切换 v-show 较好
+  v-if:dom替换
+  v-show:dom元素的隐藏于显示,切换的速度快
+-->
+<div id="demo">
+  <template v-if="loginType === 'username'">
+    <label>Phone</label>
+    <input placeholder="手机号登录" key="tel">
+  </template>
+  <template v-else>
+    <label>Email</label>
+    <input placeholder="邮箱登录" key="email">
+  </template>
+  <button @click="toggles()">切换登录方式</button>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: '#demo',
+    data: {
+      loginType: 'username',
+    },
+    methods: {
+      toggles() {
+        console.log(this.loginType);
+        if (this.loginType === 'username') {
+          return this.loginType = false;
+        } else {
+          return this.loginType = 'username';
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "dependencies": {
+    "redis": "^2.8.0",
+    "co": "^4.6.0",
+    "co-redis": "^2.1.1"
+  }
+}

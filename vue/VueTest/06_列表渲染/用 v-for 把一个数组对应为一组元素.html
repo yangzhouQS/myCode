@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>06_列表渲染_过滤与排序</title>
+</head>
+<body>
+<!--
+1. 列表过滤
+2. 列表排序
+-->
+
+<div id="demo">
+  <ul v-for="(user,index) in persons">
+    <li>{{index}} - {{user.name}} - {{user.age}}</li>
+  </ul>
+  <hr>
+  <ul v-for="(value,index) of users">
+    <li>{{index}} - {{value}}</li>
+  </ul>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: '#demo',
+    data: {
+      users: ['tom', 'libai', 'dufu', 'dumu'],
+      persons: [
+        {name: 'Tom', age: 18},
+        {name: 'Jack', age: 17},
+        {name: 'Bob', age: 19},
+        {name: 'Mary', age: 16}
+      ]
+    },
+    methods: {
+      setOrderType(orderType) {
+        this.orderType = orderType
+      }
+    }
+  })
+</script>
+</body>
+</html>

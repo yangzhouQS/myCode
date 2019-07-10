@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = 'zh_CN'>
+<head>
+	<meta charset = 'UTF-8'>
+	<title>Title</title>
+	<script src = '../src/vue.js'></script>
+</head>
+<body>
+<div id = 'app'>
+	<div>
+		<loading ref = 'load'></loading>
+	</div>
+</div>
+<template id = 'loading'>
+	<p v-show = 'flag'>疯狂加载中........</p>
+</template>
+<script>
+  let loading = {
+    data() {
+      return { flag: true };
+    },
+    template: `#loading`,
+    methods: {
+      hide() {
+        this.flag = false;
+      }
+    },
+
+  };
+  let vm = new Vue( {
+    el: '#app',
+    components: {
+      loading
+    },
+    mounted() {
+      //this.$refs.load  loading子组件
+      console.log( this.$refs.load );
+      // this.$refs.load.hide();//子组件的hide方法
+      this.$refs.load.$el.style.background = 'red';//给子组件设置属性
+    }
+  } );
+</script>
+</body>
+</html>

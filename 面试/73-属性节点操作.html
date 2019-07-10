@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  onload = function () {
+    // 操作属性节点就是属性的增删改查
+    var div = document.querySelectorAll('#dv')[0];
+
+    // 使用 setAttribute 添加属性
+    // 添加自定义, 非标准的属性 ( DOM-Core )
+    div.setAttribute('xianjs', 'xianjs');
+    //获取自定义的属性
+    console.log(div.getAttribute('xianjs'));
+    //自定义属性的移除
+    div.removeAttribute('xianjs');
+
+    // 使用 .xxx = vvv 添加属性
+    // 添加的标准属性( HTML-DOM )
+    div.className = 'c';
+
+    // 第三种( 了解 )使用 DOM 节点方法
+    // 纯 DOM-Core 的做法
+    var attr = document.createAttribute('test');
+    attr.nodeValue = '测试';
+    div.setAttributeNode(attr);
+
+
+    // 删除
+    var ck = document.querySelectorAll('#ck')[0];
+    // ck.removeAttribute( 'checked' );
+
+    // var attr = ck.getAttributeNode( 'checked' );
+    // ck.removeAttributeNode( attr );
+
+
+    // ck.checked = 'abc'; // => 将字符串先转换成 boolen 再赋值
+    // ck.checked = '';  // => 先转换成 boolean 值, 再赋值
+    // 一定要使用 true 和 false
+
+    // 修改
+    // 查询
+  };
+</script>
+
+<div id="dv"></div>
+<input type="checkbox" checked="checked" id="ck"/>
+</body>
+</html>

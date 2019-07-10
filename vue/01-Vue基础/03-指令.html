@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>指令</title>
+  <script type="text/javascript" src="src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .top {
+      width: 100px;
+      height: 100px;
+      background-color: deepskyblue;
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="fn()">行内绑定事件</button>
+<script type="text/javascript">
+  function fn() {
+    console.log('hello');
+  }
+</script>
+<div id="app">
+  <button @click="f1">vue绑定事件</button>
+  <button @click="f2($event)">vue绑定事件</button>
+  <!--
+  f1不写括号()默认传递的参数是事件对象event
+  f1写上括号,需要手动传递事件event对象,vue使用的是$event代表的原生js里面的事件 对象
+  -->
+  <br>
+  <div class="top" @click="father">
+    事件冒泡模拟
+    <button @click.stop="son">事件</button>
+  </div>
+  <!--
+  修饰符:
+  防止冒泡:@click.stop="son"
+  -->
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {},
+    methods: {
+      f1(e){
+        console.log(e);
+      },
+      f2(e){
+        console.log(e);
+      },
+      father(){
+        console.log('father');
+      },
+      son(){
+        console.log('son');
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

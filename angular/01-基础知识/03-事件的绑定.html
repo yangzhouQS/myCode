@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-click事件的绑定</title>
+	<script src='../src/angular.js'></script>
+</head>
+<body>
+<div ng-app="app">
+	<!--ng-app:表示angular的可以控制的范围-->
+	<div ng-controller="firstController">
+		<!--ng-click:绑定事件,定义事件:$scope.show=function(){}-->
+		<button ng-click="show(1,2,3)">事件的测试</button>
+		<!--ng-model:双向数据绑定-->
+		<input type="text" ng-model="xianjs">
+		<!--可以进行运算-->
+		<p>a+b = {{ a+b }}</p>
+	</div>
+</div>
+<script type="text/javascript">
+  let app = angular.module('app', []);
+  app.controller('firstController', ['$scope', function ($scope) {
+    $scope.xianjs = '我是xianjs';
+    $scope.a = 100;
+    $scope.b = 200;
+    $scope.show = function () {
+      console.log(arguments);
+      alert($scope.xianjs);
+    };
+  }]);
+</script>
+</body>
+</html>

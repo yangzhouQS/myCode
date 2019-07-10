@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<script src="../jquery-1.6.1.js"></script>
+<script type="text/javascript">
+  $(function () {
+    /*
+    *
+    * 1.$.extend();
+    *     给任意的对象扩展
+    * 2.$.extend({})
+    *   给jQuery本身扩展
+    * 3.$.fn.extend({})
+    *   给jQuery实例扩展
+    * */
+    let obj = {name: "libai"};
+    let o = {name: "李四", age: 26};
+    $.extend(obj, o);
+    console.log(obj);//{age: 26, name: "李四"}
+    console.log('---------');
+    //2.给jQuery本身扩展
+    $.extend({
+      work: function () {
+        console.log("work");
+      }
+    });
+    $.work();
+
+    //3.给jQuery实例扩展
+    $.fn.extend({
+      css1: function () {
+        console.log('css1');
+      }
+    });
+    $().css1();
+  });
+</script>
+
+</body>
+</html>

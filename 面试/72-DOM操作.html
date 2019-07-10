@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+
+  </script>
+</head>
+<body>文本节点</body>
+</html>
+<script>
+  onload = function () {
+    // 常见的节点属性
+    // nodeValue 表示节点的值, 所有的节点都有该属性, 一般文本节点才使用该属性
+    // var txt = document.body.lastChild.nodeValue
+    // alert( "|" + txt + "|" );
+
+    // alert( document.body.nodeValue );
+    // 将 body 中的文本修改为: '我是唯一的文本'
+    // document.body.lastChild.nodeValue = '我是唯一的文本';
+
+
+    // nodeName 表示节点的名字. 虽然所有的节点都有该属性, 但是一般元素节点才使用
+    // 元素节点打印的元素名均为大写字母
+    // alert( document.body.nodeName );
+    // var div = document.createElement( 'div' );
+    // alert( div.nodeName );
+
+    // 属性节点与文本节点使用该属性得到什么
+    // attriutes[ .. ]
+    // var attr1 = document.body.getAttributeNode( 'itcast' );
+    // var attr2 = document.body.attributes[ 0 ];
+
+    // alert( document.body.lastChild.nodeName );
+
+
+    // nodeType 节点类型
+    // js 高程 dom 节点
+    // 1 元素节点
+    // 2 属性节点
+    // 3 文本节点
+    // 11, 9 了解一下
+
+    // alert( document.nodeType );
+    // alert( document.createDocumentFragment().nodeType );
+
+    var attr = document.body.getAttributeNode('itcast');
+    var body = document.body;
+    var txt = document.body.lastChild;
+    alert('属性: ' + attr.nodeType + '\n' +
+      '标签: ' + body.nodeType + '\n' +
+      '文本: ' + txt.nodeType);
+
+  };
+</script>

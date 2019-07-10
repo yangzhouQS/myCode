@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="vue.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul v-for="(item,index) in data">
+    <li v-if="item.isShow"> {{index}} - {{item.a}} - {{item.b}}</li>
+  </ul>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      data: [
+        {isShow: true, a: 100, b: 200},
+        {isShow: false, a: 101, b: 10086}
+      ]
+    }
+  });
+</script>
+</body>
+</html>

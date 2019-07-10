@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="../src/angular.js"></script>
+	<link rel="stylesheet" href="../src/bootstrap/css/bootstrap.css">
+</head>
+<style>
+	.red {
+		color: red;
+	}
+</style>
+<body ng-app="app">
+<div ng-controller="myCtr">
+	<!--ng-href:动态绑定连接路径
+		ng-src:图片的资源路径
+	-->
+	<p><a ng-href="{{xianjs}}">xianjs</a></p>
+	<p><img ng-src="{{ imgSrc }}" alt="xxx"></p>
+	<p>
+		<span ng-class="'red'">class值字符串</span>
+		<span ng-class="color">class的值为变量</span>
+		<span ng-class="{red:true,green:false}">class的值为对象</span>
+		<span ng-class="['red','green']">class的值为数组</span>
+	</p>
+</div>
+<script>
+  let app = angular.module('app', []);
+  app.controller('myCtr', ['$scope', function ($scope) {
+    setTimeout(() => {
+      console.log('加载完成');
+      $scope.xianjs = 'https://www.xianjs.net';
+    }, 1000);
+    $scope.imgSrc = 'images/1.jpg';
+    $scope.color = 'red';
+
+  }]);
+</script>
+</body>
+</html>

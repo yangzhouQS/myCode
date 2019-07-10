@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+    .red {
+      color: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .fz30 {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <button @click="toggle">切换</button>
+  <p v-if="isShow">显示是女的</p>
+  <p v-else>显示是男的</p>
+  <p v-show="isShow">显示与隐藏进行切换的哦,开始加载时我会直接加载进来的,切换的时候是通过;style display:none进行隐藏的哦</p>
+  <!--
+  对于频繁切换的元素推荐使用:v-show
+  对于加载时的速度快的可以使用v-if,只会加载需要显示的内容元素
+  -->
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      isShow: true
+    },
+    methods: {
+      toggle() {
+        return this.isShow = !this.isShow;
+      }
+    },
+  });
+</script>
+
+</body>
+</html>

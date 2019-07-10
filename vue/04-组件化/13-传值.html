@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <com1
+      :parentmsg="msg"
+      @func="getMsg">
+  </com1>
+</div>
+
+<script type="text/javascript">
+  let com1 = {
+    template: `<div>
+      <p>子组件</p>
+      <p>parent_msg {{parentmsg}}</p>
+      <button @click="emitMsg">方法的触发</button>
+      </div>`,
+    props: ['parentmsg'],
+    methods: {
+      emitMsg() {
+        this.$emit('func', '在这里学习');
+      }
+    }
+  };
+  let vm = new Vue({
+    el: '#app',
+    data: {msg: 'xianjs'},
+    methods: {
+      getMsg(data) {
+        console.log('父组件 : ', data);
+      }
+    },
+    components: {
+      com1
+    }
+  });
+
+</script>
+
+</body>
+</html>

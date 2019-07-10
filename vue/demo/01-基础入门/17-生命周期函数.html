@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      msg: 'xianjs',
+    },
+    methods: {
+      show() {
+        console.log('show方法');
+      }
+    },
+    beforeCreate() {
+      // beforeCreate:执行的时候都没有初始化,method方法无法调用,data数据没有初始化
+      console.log('data未初始化');
+    },
+    created() {
+      /*
+      * created阶段:data和methods方法都进行了初始化
+      * */
+      console.log(this.msg);
+      this.show();
+      console.log('created阶段');
+    },
+    beforeMount() {
+      console.log('页面尚未渲染完成');
+    },
+    mounted() {
+      console.log('页面已经渲染完成');
+    },
+
+  })
+</script>
+</body>
+
+</html>

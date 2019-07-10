@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1 ref="myh1">hello 世界不好!!!</h1>
+  <button @click="getText">事件的触发</button>
+  <login ref="login"></login>
+</div>
+<script type="text/javascript">
+  let login = {
+    template: '<h1>登陆组件</h1>',
+    data() {
+      return {
+        msg: 'msg组件'
+      };
+    },
+    methods: {
+      getMsg() {
+        console.log(this.msg);
+      }
+    }
+  };
+  let vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'data 父组件的data数据',
+      xianjs: null
+    },
+    methods: {
+      getText() {
+        // $refs:vm实例上的一个对象
+        //  ref  是 英文单词 【reference】   值类型 和 引用类型  referenceError
+        console.log(this.$refs.myh1.innerText);
+        console.log(this.$refs.login.msg);//获取组件的数据
+        this.$refs.login.getMsg();//调用组件的方法
+      }
+    },
+    components: {login}
+  });
+</script>
+</body>
+</html>

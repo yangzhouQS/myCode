@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+    .red {
+      color: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .fz30 {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <span>循环数字</span>
+  <ul v-for="(item,index) in 3">
+    <li>第{{item}}个li {{index}}</li>
+  </ul>
+  <span>循环数组</span>
+  <ul>
+    <ul v-for="(item,index) in arr">
+      <li>{{item}}</li>
+    </ul>
+  </ul>
+  <span>循环对象</span>
+  <ul>
+    <ul v-for="(user,index) in users">
+      <li>{{index}} - {{user.name}} - {{user.age}}</li>
+    </ul>
+  </ul>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      arr: [1, false, 'a', true, ['false', true]],
+      users: [
+        {name: '李四', age: 26},
+        {name: 'alex', age: 23},
+        {name: 'tom', age: 14},
+        {name: 'jack', age: 26}
+      ]
+    },
+    methods: {},
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  function test(count, ms) {
+    var c = 1;
+    var time = [new Date() * 1];
+    var id = setTimeout(function () {
+      time.push(new Date() * 1);
+      c += 1;
+      if (c <= count) {
+        setTimeout(arguments.callee, ms);
+      } else {
+        clearTimeout(id);
+        var tl = time.length;
+        var av = 0;
+        for (var i = 1; i < tl; i++) {
+          var n = time[i] - time[i - 1]; //收集每次与上一次相差的时间数
+          av += n;
+        }
+        alert(av / count); // 求取平均值
+      }
+    }, ms);
+  }
+
+  window.onload = function () {
+    var id = setTimeout(function () {
+      test(100, 1);
+      clearTimeout(id);
+    }, 3000);
+  }
+
+</script>
+
+</body>
+</html>

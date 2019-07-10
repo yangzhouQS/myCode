@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  fetch("./data/1.json").then(data => {
+    return data.text();
+  }).then(data => {
+    console.log(JSON.parse(data));
+  });
+
+
+  function* getData() {
+    let data = fetch("./data/1.json").then(data => {
+      return data.text();
+    }).then(data => {
+      console.log(JSON.parse(data));
+    });
+  }
+</script>
+</body>
+</html>

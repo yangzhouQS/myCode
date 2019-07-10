@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+  <a-component></a-component>
+  <b-component></b-component>
+</div>
+<script>
+  let A = {
+    template: `
+      <div>
+      <button @click="show('A')">A来了</button>
+      <button @click="hide('A')">A走了</button>
+      </div>
+    `,
+    methods: {
+      show(name) {
+        console.log(name + "来了");
+      },
+      hide(name) {
+        console.log(name + "走了");
+      }
+    }
+  };
+  let B = {
+    template: `<div>
+      <button @mouseenter="show('B')">B来了</button>
+      <button @mouseout="hide('B')">B走了</button>
+    </div>`,
+    methods: {
+      show(name) {
+        console.log(name + "来了");
+      },
+      hide(name) {
+        console.log(name + "走了");
+      }
+    }
+  };
+  new Vue({
+    el: "#app",
+    components: {
+      'a-component': A,
+      'b-component': B,
+    }
+  });
+</script>
+</body>
+</html>

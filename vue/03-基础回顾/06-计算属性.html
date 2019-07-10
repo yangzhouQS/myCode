@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{text}}</p>
+  <p>{{changeText}}</p>
+</div>
+
+<script type="text/javascript">
+
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      text: "hello",
+    },
+    computed: {
+      /*changeText() {
+        return this.text.toUpperCase();
+      }*/
+      /*
+      *  get和set
+      */
+      changeText: {
+        get() {
+          return this.text.toUpperCase();
+        },
+        set(val) {
+          this.text = val + "xxxx";
+        }
+      }
+    },
+    methods: {}
+  });
+  /*
+  * computed:依赖的是缓存
+  * methods:是每次重新计算
+  *   computed可以加快网站的速度
+  *
+  * */
+</script>
+</body>
+</html>

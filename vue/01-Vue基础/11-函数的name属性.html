@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+  let f = function () {
+
+  };
+  console.log(f.name);
+  function f1() {
+
+  }
+  console.log(f1.name);
+  console.log((function () {
+  }).name);//匿名函数的name属性值为 ==>""
+
+  //特殊的name
+  //1 - 通过构造函数方式常见的函数
+  /*
+   * 通过Function构造函数创建的函数,只有一个参数时,放在字符串中就可以创建函数
+   * 通过构造函数创建的函数的函数名称是===>anonymous
+   * */
+  let f3 = new Function("let a=100;console.log(a)")
+  console.log(f3.name);
+
+  /*
+   * 2 - 通过bind方法创建的函数
+   * name属性的值为: bound + 原函数的名称
+   * bind:绑定的书通过构造函数创建的函数的时候,name属性的属性值是:bound anonymous
+   * */
+  let f4 = f.bind(null);
+  console.log(f4.name);//bound f
+
+</script>
+
+</body>
+</html>

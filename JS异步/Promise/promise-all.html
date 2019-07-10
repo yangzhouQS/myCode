@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>Title</title></head><body>
+<script type="text/javascript">
+  const status = (response) => {
+    if (response.status >= 200 && response.status < 300) {
+      return Promise.resolve(response);
+    } else {//出现错误是走这里的
+      return Promise.reject(new Error(response.statusText));
+    }
+  }
+  const json = (response) => response.json()
+  /*
+  * 调用 fetch() 从根域名中的 user.json 文件获取一个TO-DO 清单，我们创建了一个 promises 链。
+  * */
+  let f1 = fetch('./user.json');
+  let f2 = fetch('./user.json');
+  Promise.all([f1, f2]).then(res => {
+    console.log('data =>', res);
+  }).catch(e => {
+    console.log('err =>', e);
+  });
+
+  //使用解构赋值
+  Promise.all([f1, f2]).then(([res1, res2]) => {
+    console.log('Results', res1, res2)
+  });
+</script></body></html>

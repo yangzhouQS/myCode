@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='zh_CN'>
+<head>
+	<meta charset='UTF-8'>
+	<title>Title</title>
+	<script src='../src/vue.js'></script>
+</head>
+<body>
+<div id='app'>
+	<div>
+		
+		<input type='radio' value='home' name='"flag"' v-model='radio'>home
+		<input type='radio' value='list' name='"flag"' v-model='radio'>列表
+		<p>radio {{ radio }}</p>
+		<keep-alive>
+			<component :is='radio'></component>
+		</keep-alive>
+		<!--
+		组件切换会进行创建到销毁的整套过程
+		使用keep-alive对组件进行缓存,就不会销毁
+		使用缓存不会组钩子函数创建组件和销毁组件
+		-->
+	</div>
+</div>
+<script>
+  let home = {
+    template: '<div>home组件</div>'
+  };
+  let list = {
+    template: `<div>List列表页</div>`
+  };
+  let vm = new Vue( {
+    el: '#app',
+    data: {
+      radio: 'home'
+    },
+    components: {
+      home, list
+    }
+  } );
+</script>
+</body>
+</html>

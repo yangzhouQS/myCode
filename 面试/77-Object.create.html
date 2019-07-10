@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let o = {name: 'xxx', age: 26};
+  let o2 = Object.create(o);
+  //o2的原型就是参数
+  o2.name = 'tom';
+  console.log(o2);
+  console.log(o);
+
+  /*
+		var o = {
+			sayHello: function () {
+				console.log( '你好' );
+			}
+		};
+
+		var o1 = Object.create( o );
+		// 创建一个新对象 o1, 该新对象的原型即 __proto__ 就是 o
+		o1.sayHello();
+	*/
+  // 创建一个对象, 具有数组的方法, 并存储数字, 遍历出来
+  // var itcastArr = Object.create( [] );
+
+  // 1, 存储数据
+  // itcastArr.push( 1 );
+  // itcastArr.push( 2 );
+  // itcastArr.push( 3, 4, 5, 6 );
+
+  // 2, 遍历
+  // for ( var i = 0; i < itcastArr.length; i++ ) {
+  // 	console.log( '[ ' + i + ' ] = ' + itcastArr[ i ] );
+  // }
+
+  // 练习: 如果浏览器不支持 Object.create 怎么办?
+  // 不要修改内置的对象
+  /*
+  if ( !Object.create ) {
+    Object.create = function () {}
+  }
+  */
+
+  // 该函数要实现原型继承, 返回的对象应该继承自 obj
+  function inherit(obj) {
+    if (Object.create) {
+      return Object.create(obj);
+    } else {
+      function F() {
+      }
+
+      F.prototype = obj;
+      return new F();
+    }
+  }
+
+  var arr = inherit([]); // constructor 就是 Array
+
+  var _ = 0;
+</script>
+</body>
+</html>

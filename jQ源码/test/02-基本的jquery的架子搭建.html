@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!--<script src="../myjQuery.js"></script>-->
+<!--<script src="../jquery-1.6.1.js"></script>-->
+<script src="jQuery.1.0.0.js"></script>
+<script type="text/javascript">
+  /*var obj = {
+    name: "李白", list: {
+      say: function () {
+        console.log('say');
+      }
+    }
+  };
+  var obj2 = {
+    name: "李四", age: 26, list: {
+      hello: function () {
+        console.log('hello');
+      }
+    }
+  };
+  var obj3 = {sex: "男"};
+  $.extend(true, obj, obj2, obj3);
+  console.log(obj);
+
+  //给jQuery对象扩展
+  $.extend({
+    say: function () {
+      console.log('say');
+    }
+  });
+  $.say();
+*/
+  // var class2type = {};
+  // console.log(class2type[toString.call(213312)]);
+  // console.log($.type([]));
+
+  /*
+  * 类数组合并测试
+  * */
+  function fn() {
+    var res = jQuery.makeArray(arguments);
+    res.push(465);
+    console.log(res);
+  }
+
+  //fn(1, 2, 3, '3');
+
+  console.log('-----');
+  let arr = [];
+  // console.log($.merge([2], [1, 2, 3]));
+  let obj = {"0": "xianjs", "1": "465", "2": "10096"};
+  console.log($.markArray(obj));
+  //{1: "465", 2: "10096"}
+  // console.log($.type([]));//array
+
+
+</script>
+
+</body>
+</html>

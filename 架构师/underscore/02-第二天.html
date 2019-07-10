@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text">
+
+<!--<script src="js/underscore%201.9.js"></script>-->
+<script src="js/demo.js"></script>
+<script>
+  let arr = [1, 2, 3, 3, 2, 1];
+  var res = _.map(arr, function (value, index, array) {
+    return value * 2;
+  });
+  console.log(res);
+
+  /*console.log(_.uniq(arr, function (value) {
+    return typeof value === 'string' ? value.toLowerCase() : value;
+  }));
+  console.log(_(arr).uniq(function (value) {
+    return typeof value === 'string' ? value.toLowerCase() : value;
+  }));*/
+  // console.log(_.chain(arr).uniq().values());
+  /*var obj = {name: 'lisi'};
+  console.log(obj.propertyIsEnumerable('toString'));*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>命名路由</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+  <script src="../src/axios.js"></script>
+  <script src="../src/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--命名路由进行传递参数-->
+  <router-link
+      :to="{name:'home',
+      params:{id:100}}">home
+  </router-link>
+  <router-link :to="{name:'index'}">index</router-link>
+  <router-view></router-view>
+</div>
+<template id="index">
+  <p>index 首页</p>
+</template>
+<template id="home">
+  <p>home 用户中心 {{$route.params}}</p>
+</template>
+<script type="text/javascript">
+  let Home = {
+    template: '#home'
+  };
+  let Index = {
+    template: '#index'
+  };
+  let router = new VueRouter({
+    routes: [
+      //获取命名路由传递的参数,需要和视图中的路由别名保持一致的
+      {path: '/home/:id', name: 'home', component: Home},
+      {path: '/index', name: 'index', component: Index}
+    ]
+  });
+  new Vue({router}).$mount('#app');
+window.onhashchange=function () {
+  console.log(arguments);
+}
+</script>
+</body>
+</html>

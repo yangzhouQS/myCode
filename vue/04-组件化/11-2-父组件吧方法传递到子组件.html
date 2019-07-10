@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--拿到父组件传递方法的引用-->
+  <com2 @func="show"></com2>
+</div>
+<template id="tpl">
+  <div>
+    <p>父组件向子组件传递方法</p>
+    <!--showCLick:用来触发父组件传递的方法-->
+    <button @click="showCLick">触发父组件的show方法</button>
+  </div>
+</template>
+<script>
+  let com2 = {
+    template: '#tpl',
+    data() {//子组件的data是一个方法,和vm实例的data是不一样的,但是数据的使用方法是你一样的
+      return {//子组件的数据
+        xianjs: '学习javascript'
+      }
+    },
+    methods: {
+      showCLick() {//子组件用来触发父组件传递的方法
+        //点击组件的方法调用父组件传递过来的方法
+        this.$emit('func', this.xianjs);
+      }
+    },
+  }
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      xianjs: null,
+    },
+    methods: {//父组件的方法
+      show(data) {
+        console.log('父组件的show方法', `子组件传递的 data = ${data}`);
+        this.xainjs = data;
+      }
+    },
+    components: {
+      com2,//局部组件的注册
+    },
+  });
+</script>
+</body>
+</html>

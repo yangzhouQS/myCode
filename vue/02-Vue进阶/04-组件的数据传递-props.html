@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>属性props</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--调用组件:驼峰命名的方法需要修改为中划线-->
+  <!-- 向组件的的数据字段传递字符串 -->
+  <my-component my-msg="hello"></my-component>
+</div>
+<script type="text/javascript">
+  /*1.字面量语法*/
+  Vue.component('myComponent', {
+    props: ['myMsg'],//声明props 组件的数据字段
+    template: `<div>组件的数据传递 -- <span>{{myMsg}}</span></div>`,
+  });
+  let vm = new Vue({
+    el: "#app",
+    data: {}
+  })
+
+</script>
+</body>
+</html>

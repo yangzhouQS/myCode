@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>03-带VAR和不带的区别</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /*
+  * 在全局作用域下使用var声明的变量相当与给window全局对象设置了一个属性
+  * 变量的值就是属性值（私有作用域中声明的私有变量和WINDOW没啥关系）
+  * */
+  /*console.log(a);//undefined
+  var a = 10;
+  console.log(a);// 全局的变量 a 为10
+  console.log(window.a);//10 ==>window的属性a值为10
+  console.log('a' in window);//true*/
+
+  // 1.1在变量提升阶段，在全局作用域中声明了一个变量A，
+  // 1.2此时就已经把A当做属性赋值给WINDOW了，
+  // 1.3只不过此时还没有给A赋值，默认值UNDEFINED  in：检测某个属性是否隶属于这个对象
+
+  /* a = 13;
+   console.log(window.a);//=>13
+
+   window.a = 14;
+   console.log(a);//=>14
+   //=>全局变量和WIN中的属性存在 “映射机制”
+ */
+
+  /*
+  * 不使用var定义变量:
+  *   其实是给win增加了一个属性,不是声明变量
+  *   不加VAR的本质是WIN的属性
+  * */
+
+  //console.log(a);//Uncaught ReferenceError: a is not defined ==>a就不是一个变量
+  console.log(window.a);//win下的属性不存在获取是返回的就是undefined
+  a = 100; // 不是声明一个变量a,而是给wind增加一个属性a的值为100
+  console.log(a);//==>window.a 只是简写而已呀
+  console.log(window.a);//访问window的一个属性
+
+  console.log(c, b);//=>undefined undefined
+  var c = 3, b = 3;//c和b都是带var的
+  var d = e = 100;//d是带var的e不带var
+
+  function fn() {
+    console.log(c, b);//undefined 3
+    //c是变量提升,b访问的是全局的变量
+    //b = 5,是window.b=5,不是声明变量
+    var c = b = 5;
+    //c是局部的变量
+    console.log(c, b);//5 5
+  }
+
+  fn();
+  console.log(c, b);//3 5
+
+  console.log('xx');
+</script>
+</body>
+</html>

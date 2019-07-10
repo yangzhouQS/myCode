@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <!--
+  值|过滤器
+  过滤器是按照管道符前面的数据按照过滤器的规则进行过滤处理
+  不传递参数可以省略括号的。
+  -->
+  <p>{{PI|toFixed(3)}}</p>
+  <p>{{2|addZero}}</p>
+</div>
+<script type="text/javascript">
+  //全局过滤器
+  Vue.filters("toFixed", (data, n) => data.toFixed(n));
+  new Vue({
+    el: "#app",
+    data: {
+      PI: 3.141592653589793
+    },
+    filters: {
+      /*
+       * data:管道符前面的数据,数据是默认传递过来的
+       * n:就是传递的第一个参数
+       * */
+      toFixed(data, n){
+        //data
+        console.log(data);
+        //toFixed()是进行四舍五入的
+        return data.toFixed(n);
+      },
+      addZero(target){
+        return target.toString().padStart(2, '0');
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

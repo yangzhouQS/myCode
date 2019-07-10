@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="bootstrap.css">
+  <script src="vue.js"></script>
+</head>
+<body>
+<div class="container">
+  <form action="" class="form-inline">
+    <div class="form-group">
+      <label>名称</label>
+      <input type="text" v-model="title" class="form-control">
+      <button @click.prevent="add" class="btn btn-primary">添加</button>
+    </div>
+  </form>
+  <div>
+    <ul class="list">
+      <li v-for="(row,index) in list" :key="index">{{row}}</li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: ".container",
+    data: {
+      list: [],
+      title: ''
+    },
+    methods: {
+      add() {
+        if (this.title.trim().length === 0) {
+          return;
+        }
+        this.list.push(this.title);
+      }
+    },
+  })
+</script>
+
+</body>
+</html>

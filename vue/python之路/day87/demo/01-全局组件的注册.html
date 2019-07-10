@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>全局组件的注册</h1>
+  <global-compontent></global-compontent>
+</div>
+<script>
+  Vue.directive("pos", function (el, bindding) {//自定义事件
+
+  });
+  Vue.component('global-compontent', {
+    template: `
+    <div>
+    <h1>hello word</h1>
+    <span>全局的组件 msg = {{msg}}</span>
+    </div>
+    `,
+    data() {
+      return {
+        msg: "xianjs"
+      }
+    }
+  });//全局组件的注册
+  let vm = new Vue({
+    el: "#app",
+    data: {},
+    methods: {//方法
+
+    },
+    computed: {//计算属性
+
+    },
+    watch: {//侦听
+
+    }
+  });
+</script>
+</body>
+</html>

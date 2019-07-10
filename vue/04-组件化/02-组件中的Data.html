@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <mycom1></mycom1>
+</div>
+<script type="text/javascript">
+  /*
+  * 组件中的data
+  *   1.组件可以有data,但是和实例的data不一样的
+  *   2.组件中的data必须是一个方法,必须返回一个对象
+  *   3.组件中data的使用和实例中的使用方法是一样的
+  * */
+  Vue.component('mycom1', {
+    template: `<h1>这是全局的组件 {{name}}</h1>`,
+    data() {
+      return {
+        name: 'xainjs'
+      }
+    }
+  });
+  let vm = new Vue({
+    el: "#app",
+    data: {},
+    component: {}
+  });
+
+</script>
+
+</body>
+</html>

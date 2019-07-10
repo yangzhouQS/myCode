@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../src/angular.js"></script>
+	<script src="../src/angular-route.js"></script>
+	<!--<script src="../src/angular-ui-router.js"></script>-->
+	<link rel="stylesheet" href="../src/bootstrap/css/bootstrap.css">
+</head>
+<body ng-app="app">
+<div ng-controller="myCtr">
+	<div>
+		<a href="#/">首页</a>
+		<a href="#/map">地图</a>
+		<a href="#/video">视频</a>
+	</div>
+	<!--<ng-view></ng-view>-->
+	<div ng-view></div>
+</div>
+<script>
+  //1.路由注入
+  let app = angular.module('app', ['ngRoute']);
+  //2.配置
+  app.config(function ($routeProvider) {
+    console.log($routeProvider);
+    //配置路由的信息
+    $routeProvider
+      .when('/', {
+        template: '<h1>首页 {{ msg }}</h1>',
+        controller: function ($scope) {
+          $scope.msg = '私有作用域';
+        }
+      })
+      .when('/map', {
+        template: '<h1>map地图 {{ msg }}</h1>',
+        controller($scope) {
+          $scope.msg = '私有作用域';
+        }
+      }).when('/video', {
+      template: '<h1>video {{ msg }}</h1>',
+      controller($scope) {
+        $scope.msg = 'video 私有作用域';
+      }
+    });
+  });
+  //3.页面的容器
+  //依赖注入使用$http服务
+  app.controller('myCtr', ['$scope', '$http', function ($scope, $http) {
+    $http({
+      url: './carts.json',
+      method: 'get',
+      params: {//get请求参数的配置
+        name: 'lisi',
+        age: 26
+      },
+      //支持.then()和success().error()
+    }).then(res => {
+      console.log(res);
+    }, reason => {
+      console.log(reason);
+    });
+  }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+<script>
+  var xmlStr = `<users>
+  <person>
+    <name>李四</name>
+    <age>26</age>
+    <sex>男</sex>
+  </person>
+  <person>
+    <name>丽丽</name>
+    <age>18</age>
+    <sex>女</sex>
+  </person>
+</users>`;
+
+  // Changes XML to JSON
+  function xmlToJson(xml) {
+    // Create the return object
+    var obj = {};
+    if (xml.nodeType == 1) { // element
+      // do attributes
+      if (xml.attributes.length > 0) {
+        obj["@attributes"] = {};
+        for (var j = 0; j < xml.attributes.length; j++) {
+          var attribute = xml.attributes.item(j);
+          obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+        }
+      }
+    } else if (xml.nodeType == 3) { // text
+      obj = xml.nodeValue;
+    }
+    // do children
+    if (xml.hasChildNodes()) {
+      for (var i = 0; i < xml.childNodes.length; i++) {
+        var item = xml.childNodes.item(i);
+        var nodeName = item.nodeName;
+        if (typeof (obj[nodeName]) == "undefined") {
+          obj[nodeName] = xmlToJson(item);
+        } else {
+          if (typeof (obj[nodeName].push) == "undefined") {
+            var old = obj[nodeName];
+            obj[nodeName] = [];
+            obj[nodeName].push(old);
+          }
+          obj[nodeName].push(xmlToJson(item));
+        }
+      }
+    }
+    return obj;
+  }
+
+  var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+  var xotree = new XML.ObjTree();
+  var jsonData = xotree.parseXML(xml);
+
+
+</script>
+
+</body>
+</html>

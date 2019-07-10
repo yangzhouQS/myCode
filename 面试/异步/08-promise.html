@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  let fn = () => {
+    return new Promise((resolve, reject) => {
+      throw new Error('失败自定义');
+      if (Math.random() > 0.5) {
+        resolve('ok');
+      } else {
+        reject('error')
+      }
+    });
+  };
+
+  /*then(成功,失败):接受两个参数*/
+  fn().then(data => {
+    console.log(data);
+  }).catch(error => {
+    console.log(error);
+  });
+  /*
+  * catch()可以捕获自定义的产物
+  * 也可以捕获reject()返回的信息
+  * */
+
+</script>
+
+</body>
+</html>

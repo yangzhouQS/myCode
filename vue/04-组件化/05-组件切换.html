@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+  <!--点击时进行comName的切换-->
+  <a href="" @click.prevent="comName='login'">登录</a>
+  <a href="" @click.prevent="comName='register'">注册</a>
+
+  <!-- Vue提供了 component ,来展示对应名称的组件 -->
+  <!-- component 是一个占位符, :is 属性,可以用来指定要展示的组件的名称 -->
+  <component :is="comName"></component>
+
+  <!-- 总结:当前学习了几个 Vue 提供的标签了??? -->
+  <!-- component,  template,  transition,  transitionGroup  -->
+</div>
+<script type="text/javascript">
+  Vue.component('login', {
+    template: `<h1>登陆界面</h1>`,
+  });
+  Vue.component('register', {
+    template: `<h1>注册界面</h1>`
+  });
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      comName: 'login' // 当前 component 中的 :is 绑定的组件的名称
+    },
+    component: {}
+  });
+</script>
+
+</body>
+</html>

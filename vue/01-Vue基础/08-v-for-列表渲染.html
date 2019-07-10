@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <!--循环数字
+  循环的索引从0开始,但是循环的数字是从1开始的
+  -->
+  <ul>
+    <li v-for="(item,index) in 5">{{index}} - {{item}}</li>
+  </ul>
+  <!--循环字符串-->
+  <ul>
+    <li v-for="item in 'hello'">{{item}}</li>
+  </ul>
+  <!--循环数组-->
+  <ul>
+    <li v-for="(v,index) in arr">{{index}} - {{v}}</li>
+  </ul>
+  <!--循环对象-->
+  <ul>
+    <li v-for="(v,k) in obj">{{k}} - {{v}}</li>
+  </ul>
+  <!--二位数组的循环遍历-->
+  <ul>
+    <li v-for="(item,k) in users">
+      <span v-for="(v,k) in item"> {{v}} </span>
+    </li>
+  </ul>
+
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      arr: ['a', 'b', 'c', 'd'],
+      obj: {
+        name: '李四',
+        age: '26',
+        sex: '男',
+        addr: '北京'
+      },
+      users: [
+        {name: 'sb', age: 26, sex: '男'},
+        {name: 'sb2', age: 46, sex: '未知'},
+        {name: 'sbw', age: 36, sex: '女'},
+        {name: 'sbxx', age: 16, sex: '男'}
+      ]
+    }
+  });
+
+</script>
+
+</body>
+</html>

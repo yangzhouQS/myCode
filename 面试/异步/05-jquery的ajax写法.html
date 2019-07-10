@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+<script>
+  $.ajax('./posts.json').then(data => {
+    console.log(data);
+  }, error => {
+    console.log(error);
+  });
+</script>
+<!--<script type="text/javascript">
+  //1.5之后的写法
+  $.ajax('./posts.json').done(res => {
+    console.log(res);
+  }).fail(reason => {
+    console.log(reason);
+  });
+</script>-->
+
+</body>
+</html>

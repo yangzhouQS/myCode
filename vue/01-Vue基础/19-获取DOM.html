@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <div ref="myDemo">变色文字</div>
+  <button @click="changeColor">变色的测试</button>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {},
+    methods: {
+      changeColor() {
+        this.$refs.myDemo.style.color = 'red';
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

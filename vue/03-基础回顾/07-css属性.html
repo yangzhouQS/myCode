@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--
+  <p class="active">对象语法</p>
+  -->
+  <p :class="{active:isActive}">对象语法</p>
+  <!--
+  <p class="active">数组语法</p>
+  -->
+  <p :class="[activeClass]">数组语法</p>
+  <!--
+  style的绑定
+  <p style="font-size: 30px;">在这里学习</p>
+  -->
+  <p :style="{ fontSize:fontSize+'px',opacity:o }">在这里学习</p>
+</div>
+
+<script type="text/javascript">
+
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      isActive: true,
+      activeClass: 'active',
+      fontSize: 30,
+      o: 0.3
+    },
+
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Tom",
+    "age": "26",
+    "address": "美国"
+  },
+  {
+    "name": "jack",
+    "age": "26",
+    "address": "法国"
+  },
+  {
+    "name": "xiaoMing",
+    "age": "26",
+    "address": "中国"
+  }
+]

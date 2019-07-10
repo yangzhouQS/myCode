@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text">
+
+<!--<script src="js/underscore%201.9.js"></script>-->
+<script src="js/demo.js"></script>
+<script>
+
+  _.times(3, function (value) {
+    console.log(value);
+  });
+
+
+  /* var obj = {name: "李四", age: "26岁"};
+   Object.defineProperty(obj, 'age', {
+     enumerable: false,//设置是否可以美枚举此属性
+   });*/
+  /*
+  * for..in遍历次对象只会输出name属性,age属性无法枚举,所以就不会遍历输出
+  * */
+  /*for (var key in obj) {
+    console.log(key);//name
+  }*/
+  /*
+
+ for_in要出现问题必须满足两个条件：
+   1：IE < 9;
+   2:某些不可枚举的属性被重写。
+    在js中当一些不可枚举的属性比如toString被重写后，它会变成可枚举。然而当你碰上了IE<9,这些被重写的属性依旧
+
+  但是在 <IE9以下的浏览器中重写的方法也是无法枚举的
+ 所以for...in...方法的兼容性处理就从此开始吧
+      1.检测是否在IE9浏览器以下的环境
+      2.找到Object内置函数的原型里面封装的不可枚举的属性
+      3.判断obj.valueOf==Object.prototype.valueOf
+
+
+    propertyIsEnumerable()用来检测属性是否属于某个对象的，如果检测到了，返回true,否则false
+
+    //IE9及其现代浏览器,{toString: null}.propertyIsEnumerable('toString');重写toStrin方法返回的是 true
+    //IE<IE9时返回的是false
+    //取反为true,当hasEnumGug为true时就说明浏览器是小于IE9版本的
+    var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
+
+    // object不可枚举的属性
+    ['constructor','hasOwnProperty','isPrototypeOf','propertyIsEnumerable','toLocaleString','toLocaleString','toString','toString'];
+      constructor: ƒ Object()
+      hasOwnProperty: ƒ hasOwnProperty()
+      isPrototypeOf: ƒ isPrototypeOf()
+      propertyIsEnumerable: ƒ propertyIsEnumerable()
+      toLocaleString: ƒ toLocaleString()
+      toString: ƒ toString()
+      valueOf: ƒ valueOf()
+
+
+    //重写内置的方法
+      obj.valueOf = "xainjs";
+      for (var objKey in obj) {
+        console.log(objKey);
+      }
+      console.log({toString: null}.propertyIsEnumerable('toString'));//true
+
+  *
+  * */
+
+</script>
+
+</body>
+</html>

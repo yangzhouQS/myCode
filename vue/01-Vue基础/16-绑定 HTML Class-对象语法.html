@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>绑定 HTML Class</title>
+  <script type="text/javascript" src="src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--
+  1 - 对象语法
+    1.1active:isActive是否显示active取决于isActive的值是否为true
+
+    1.2动态切换多个 class.v-bind:class 指令也可以与普通的 class 属性共存
+  -->
+  <p :class="{active:isActive}">移动端测试</p>
+  <p class="global" :class='{error:isError,"txt-success":hasSuccess}'>动态切换多个 class</p>
+  <!--1.3绑定的数据对象不必内联定义在模板里-->
+  <p :class="classObj">绑定的数据对象不必内联定义在模板里</p>
+
+  <!--1.4绑定一个返回对象的计算属性-->
+  <p :class="clsObj">绑定一个返回对象的计算属性</p>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      isActive: true,
+      //动态切换多个 class
+      isError: false,
+      hasSuccess: true,
+      //绑定的数据对象不必内联定义在模板里
+      classObj: {
+        current: true,
+        'bg-red': true
+      }
+    },
+    computed: {
+      //绑定一个返回对象的计算属性
+      clsObj() {
+        return {
+          'bg-green': this.isActive && !this.isError,
+          'text-white': true
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

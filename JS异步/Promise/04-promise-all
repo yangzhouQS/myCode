@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  const stsatus = (response) => {
+    if (response.status >= 200 && response.status < 300) {
+      return Promise.resolve(response);
+    } else {//出现错误是走这里的
+      return Promise.reject(new Error(response.statusText));
+    }
+  }
+  const json = (response) => response.json()
+  /*
+  * 调用 fetch() 从根域名中的 user.json 文件获取一个TO-DO 清单，我们创建了一个 promises 链。
+  * */
+  fetch('./user.json').then(status).then(json).then((data) => {
+    console.log(data);
+  }).catch((error) => {
+    console.log('请求错误', error);
+  });
+
+</script>
+
+</body>
+</html>

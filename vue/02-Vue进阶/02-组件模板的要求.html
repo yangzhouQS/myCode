@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>组件模板的要求</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <!--组件的复用,组件是可以重复使用的,并且各个组件之间是不受别的组件影响的-->
+  <button-component></button-component>
+  <button-component></button-component>
+  <button-component></button-component>
+</div>
+<script type="text/javascript">
+  /*
+  * Vue.component()方法注册上的组件是全局的组件
+  * */
+  Vue.component('button-component', {
+    template: `<div><button @click="count++">{{count}}</button></div>`,
+    //一个组件的 data 选项必须是一个函数，
+    // 因此每个实例可以维护一份被返回对象的独立的拷贝
+    data() {
+      return {
+        count: 0
+      }
+    }
+  })
+  new Vue({
+    el: "#app",
+    data: {},
+    //在实例中注册的组件是实例组件,也称为局部组件
+    component: {}
+  });
+</script>
+
+</body>
+</html>

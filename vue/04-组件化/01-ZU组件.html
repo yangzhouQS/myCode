@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<p>
+  <span class="RichText ztext CopyrightRichText-richText" itemprop="text"><p>答案很简单，因为网上说的是错的。</p><p>React.js 的算法本质上是重刷视图，相当于设置 innerHTML，只不过它设置的是内存里面 Virtual-DOM，而不是真实的 DOM。你要是拿它和真实的 innerHTML 比那肯定是 React.js 更快。</p><p>但实际上我们并不会这么成片成片地通过 innerHTML 去更新视图（你要是用 Backbone.js 我无话可说），而更多的是精细化地一个数据对应一个 DOM 去更新（例如用jQuery）。假设数据变化对应的手动 DOM 操作都是尽可能一一对应的（最小化 DOM 操作），那么 React.js 对比我们手动操作 DOM 来说毫无性能可言，因为在得到最小化的 DOM 操作结果之前你还有一个 diff 算法。</p><p>React.js 厉害的地方并不是说它比 DOM 快（这句话本来就是错的），而是说不管你数据怎么变化，我都可以以最小的代价来更新 DOM。方法就是我在内存里面用新的数据刷新一个虚拟的 DOM 树，然后新旧 DOM 树进行比较，找出差异，再更新到真正的 DOM 树上。</p><p>这就是所谓的 diff 算法，虽然说 diff 算法号称算法复杂度 O(n) 可以得到最小操作结果，但实际上 DOM 树很大的时候，遍历两棵树进行各种对比还是有性能损耗的，特别是我在顶层 setState 一个简单的数据，你就要整棵树 walk 一遍，而真实中我可以一句 jQuery 就搞定，所以就有了 `shouldComponentUpdate` 这种东西。</p><p>而且不管 Vue 还是 React.js 它们的列表对比算法都不是最优算法，最优算法是 <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Levenshtein_distance%23Computing_Levenshtein_distance" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">Levenshtein distance</a> 动态规划，算法复杂度 O(n^2)，React.js 接受不了，就搞了一个简单的 O(n) 版本的。所以在某些情况下即使带了 `key`，也可能带上了不必要的元素移动操作（对比最优算法而言），所以它号称最小的 DOM 操作其实也是有点瑕疵的。</p><p>对比人肉版本的手工最小 DOM 操作，React.js 无疑是输家，diff 性能有损耗，也不是所有情况都是最小 DOM 操作。但是胜在方便，一切都是 trade off。</p><p>所以说，同学们，不要见的风就是雨啊，老想搞个大新闻。</p></span>
+</p>
+<div id="app">
+  <com1></com1>
+  <com2></com2>
+  <com3></com3>
+  <div>
+    <login></login>
+  </div>
+</div>
+<template id="tpl">
+  <div>全局组件:template创建的全局组件 <p>{{msg}}</p></div>
+</template>
+<script type="text/javascript">
+  /*
+  * 注意: 组件的注册需要唯一根节点
+  * */
+  //1.Vue.extend创建全局组件
+  let com1 = Vue.extend({
+    template: `<div><span>世界你好</span><p>msg = {{msg}}</p></div>`,
+    data() {
+      return {
+        msg: 'xianjs'
+      }
+    }
+  });
+  //全局组件的注册
+  Vue.component('com1', com1);
+  //2.Vue.component直接创建全局组件
+  Vue.component('com2', {
+    template: `<div>Vue.component创建的全局组件</div>`,
+  });
+  //3.使用模板创建组件
+  Vue.component('com3', {
+    template: "#tpl",
+    data() {
+      return {
+        msg: "北京"
+      }
+    }
+  });
+  //4.私有组件
+  let login = {
+    template: `<div>私有组件:登陆</div>`
+  };
+  let vm = new Vue({
+    el: "#app",
+    data: {},
+    methods: {},
+    template: `<login></login>`,
+    components: {
+      login
+      // 'login': login
+    }
+  });
+</script>
+
+</body>
+</html>

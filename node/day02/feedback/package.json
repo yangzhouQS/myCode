@@ -1,0 +1,10 @@
+{
+  "name": "day02",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "art-template": "^4.13.2",
+    "bootstrap": "3"
+  }
+}

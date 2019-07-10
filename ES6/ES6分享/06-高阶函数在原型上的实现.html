@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /**
+   * 判断传入的回调函数是否为函数
+   * @param fn 传入的函数名称
+   * @returns {boolean} 返回boolean值
+   */
+  function isFunction(fn) {
+    return toString.call(fn) === '[object Function]';
+  }
+
+  let arr = [1, 4, 5, 3];
+  let obj = {name: 'tom'};
+  //1 - 在原型上实现与forEach相同的方法
+  /**
+   * 传入的参数为回调函数和上下文环境==>this指向
+   * */
+  Array.prototype.myEach = function (callback, context) {
+    context = context || window;//设置默认值
+
+    if (isFunction(callback)) {//判断传递进来的是否为函数
+      for (var i = 0, l = this.length; i < l; i++) {
+        //执行回调函数,回调函数的参数为改变上下文的this指向,当前的元素,当前的索引,当前操作的数组
+        callback.call(context, this[i], i, this);
+      }
+    } else {
+      throw new Error('arguments[0] is not a function');
+    }
+  };
+  /*arr.forEach(function (value, index, array) {
+    console.log(value, index, array, this);
+    //1 0 (4) [1, 4, 5, 3] {name: "tom"}
+  }, obj);
+  arr.myEach(function (value, index, array) {
+    console.log(value, index, array, this);
+  }, obj);*/
+
+  //2 - 实现map函数的操作
+  Array.prototype.myMap = function (callback, context) {
+    context = context || window;//设置默认值
+    var ary = [];
+    if (isFunction(callback)) {
+      for (var i = 0, l = this.length; i < l; i++) {
+        ary.push(callback.call(context, this[i], i, this));
+      }
+    } else {
+      throw new Error('传递的回调函数不合法');
+    }
+    return ary;
+  };
+  //[1, 4, 5, 3]
+  /* arr.myMap(function (value, index, array) {
+     console.log(value * 2, index, array, this);
+     // return value * 2;
+   }, obj);
+   */
+  //3 - reduce实现
+  Array.prototype.myReduce = function (fn, prev) {
+    for (let i = 0; i < this.length; i++) {
+      if (typeof prev === 'undefined') {
+        prev = fn(this[i], this[i + 1], i + 1, this);
+        ++i;
+      } else {
+        prev = fn(prev, this[i], i, this);
+      }
+    }
+    return prev;
+  };
+  console.log([1, 2, 3].myReduce((prev, next, index, array) => {
+    return prev + next;
+  }, 4));
+
+  //5 - filter实现
+  Array.prototype.myFilter = function (callback, context) {
+    context = context || window;
+    var ary = [];
+    for (var i = 0; i < this.length; i++) {
+      var result = callback.call(context, this[i], i, this);
+      if (result) {
+        ary.push(result);
+      }
+    }
+    return ary;
+  };
+</script>
+
+</body>
+</html>

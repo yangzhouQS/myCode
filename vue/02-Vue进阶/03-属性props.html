@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>属性props</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--调用组件:驼峰命名的方法需要修改为中划线-->
+  <my-componten my-message="hello"></my-componten>
+</div>
+<script type="text/javascript">
+  /*
+  * 创建全局组件
+  * */
+  Vue.component('my-componten', {
+    //在模板内使用props
+    template: `<div>props {{myMessage}}</div>`,
+    //声明props
+    props: ['myMessage'],
+    data() {
+      return {
+        message: 'hello world'
+      }
+    }
+  });
+  let Child = Vue.extend({
+    template: `<div>{{diProps}} --- {{diProps}}</div>`,
+    props: ['diProps']
+  });
+  let Parent = Vue.extend({
+    template: `<div>parent --- </div>`,
+
+  });
+  new Vue({
+    el: "#app",
+    data: {}
+  });
+</script>
+
+</body>
+</html>

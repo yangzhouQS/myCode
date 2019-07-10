@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>原型对象</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  function Person() {
+  }
+
+  Person.prototype.name = 'xianjs';
+  Person.prototype.age = 28;
+  Person.prototype.job = 'Docker';
+  Person.prototype.sayName = function () {
+    alert(this.name);
+  }
+
+  let person1 = new Person();
+  person1.sayName(); // 'xianjs'
+
+  let person2 = new Person();
+  person2.sayName(); // 'xianjs'
+
+  console.log(person1.sayName == person2.sayName); //true
+
+  /*
+    1.每个对象都具有一个名为__proto__的属性；
+    2.每个构造函数（构造函数标准为大写开头，如Function()，Object()等等JS中自带的构造函数，以及自己创建的）都具有一个名为prototype的方法（注意：既然是方法，那么就是一个对象（JS中函数同样是对象），所以prototype同样带有__proto__属性）；
+
+    3.每个对象的__proto__属性指向自身构造函数的prototype；
+
+    4.每个对象都有 、__proto__ 属性，但只有函数对象才有 prototype 属性
+  */
+
+  //原型链
+  /*
+  其中add是Function对象的实例。而Function的原型对象同时又是Object原型的实例。这样就构成了一条原型链。原型链的访问，其实跟作用域链有很大的相似之处，他们都是一次单向的查找过程。因此实例对象能够通过原型链，访问到处于原型链上对象的所有属性与方法。这也是foo最终能够访问到处于Object原型对象上的toString方法的原因。
+基于原型链的特性，我们可以很轻松的实现继承。
+
+  */
+</script>
+
+</body>
+</html>

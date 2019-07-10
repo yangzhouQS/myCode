@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>局部组件的创建使用</h1>
+</div>
+<script>
+  let Header = {
+    template: `
+      <div>
+        <h1>局部 <span style="color: red">子</span>组件 {{msg}}</h1>
+        <p>在子组件使用父组件的数据 : <span>{{fData}}</span></p>
+      </div>`,
+    props: ['fData'],//接受父组件传递过来的数据
+    data() {
+      return {
+        msg: "xianjs局部组件"
+      }
+    }
+  };
+  let App = {
+    template: `<div class="demo">
+        <child-component :fData="fatherData"></child-component>
+        <hr>
+        <h1>局部的 <span style="color: rebeccapurple">父</span>组件</h1>
+        <span>在这里注册局部的子组件到父组件</span>
+    </div>`,
+    data() {
+      return {
+        fatherData: '我在西安 - fatherData',
+      }
+    },
+    components: {
+      'child-component': Header
+    }
+  };
+
+
+  let vm = new Vue({
+    el: "#app",
+    template: `<App></App>`,
+    components: {
+      App
+    },
+    date: {}
+  });
+</script>
+</body>
+</html>

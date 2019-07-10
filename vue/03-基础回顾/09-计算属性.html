@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang = 'zh-CN'>
+<head>
+	<meta charset = 'UTF-8'>
+	<title></title>
+	<script src = '../src/vue.js'></script>
+</head>
+<body>
+<div id = 'app'>{{msg}}
+	<button>登录方式切换</button>
+</div>
+<script type = 'text/javascript'> let vm = new Vue( {
+  el: '#app',
+  data: {
+    bool: true,
+    s: 100
+  },
+  computed: {
+    msg() {
+      return 'hello word';
+    }
+  },
+  methods: {
+    toggle() {
+      this.bool = !this.bool;
+    }
+  }
+} );
+var arr = [ 1, 2, 3, 4 ];
+var xianjs = 'abc';
+console.log( arr );
+var s = 100;
+</script>
+</body>
+</html>

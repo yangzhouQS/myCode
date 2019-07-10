@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>局部组件的注册</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .demo {
+      background: #8efe8b;
+    }
+  </style>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>局部组件的创建使用</h1>
+</div>
+<script>
+  let Header = {
+    template: `<div><span>{{msg}}</span><h1>局部组件的注册使用</h1></div>`,
+    data() {
+      return {
+        msg: "xianjs",
+      }
+    }
+  };
+  //文件的入口,规范这样写
+  let App = {
+    template: `<div class="demo">
+        <local-compontent></local-compontent>
+    </div>`,
+    components: {
+      'local-compontent': Header,
+    },
+  };
+  let vm = new Vue({
+    el: "#app",
+    template: `<App></App>`,
+    components: {
+      // 'App': App,
+      App//简写的形式
+    },
+    data: {}
+  });
+</script>
+</body>
+</html>

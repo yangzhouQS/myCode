@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue路由的使用</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .router-link-active,
+    .myactive {
+      color: red;
+      font-style: italic;
+      font-size: 20px;
+      text-decoration: underline;
+      background-color: green;
+    }
+
+    .v-enter,
+    .v-leave-to {
+      opacity: 0;
+      transform: translateY(240px);
+    }
+
+    .v-enter-active,
+    .v-leave-active {
+      transition: all 0.5s ease;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+  <script src="../src/vue-router.js"></script>
+</head>
+<body>
+<div class="app">
+
+  <router-link to="/login/23" tag='span'>登陆</router-link>
+  <router-link to="/register">
+    注册
+
+  </router-link>
+  <router-view></router-view>
+
+</div>
+
+<script type="text/javascript">
+  let login = {
+    template: `<h1>登陆的组件</h1>`,
+    created() {
+      console.log(this.$route);
+    }
+  };
+  let register = {
+    template: `<h1>注册的组件</h1>`,
+  };
+  let vueRouterObj = new VueRouter({
+    routes: [
+      {path: '/', redirect: '/login'},
+      {path: '/login/:id', component: login},
+      {path: '/register', component: register},
+    ],
+  });
+  let vm = new Vue({
+    el: ".app",
+    data: {},
+    methods: {},
+    router: vueRouterObj,//路由注册到vm的实例上边
+  });
+</script>
+
+</body>
+</html>

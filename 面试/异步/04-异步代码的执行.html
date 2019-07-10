@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../jquery/jquery-3.2.1.js"></script>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  /*
+  * 同步代码直接执行
+  * 异步代码块会进入异步队列等待执行
+  * */
+  console.log('start');
+  setTimeout(() => {
+    console.log('很快的定时器');
+  });
+  setTimeout(() => {
+    console.log('200ms定时器');
+  }, 200)
+  $.ajax({//ajax和请求的网络有关系的
+    url: "posts.json",
+    success(data) {
+      console.log(data);
+    }, error(error) {
+      console.log(error);
+    }
+  });
+  console.log('end');
+</script>
+
+</body>
+</html>

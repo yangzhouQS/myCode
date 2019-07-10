@@ -1,0 +1,34 @@
+[
+  {
+    "isSelected": false,
+    "productCover": "images/1.jpg",
+    "productName": "Linux命令行与shell脚本编程大全（第3版）",
+    "productInfo": "Linux命令行大全 轻松掌握Linux命令行和shell脚本编程细节 实现Linux系统任务自动化 Linux命令行大全  [美] 布鲁姆（Richard Blum），布雷斯纳汉（Christine Bresnahan） 著，门佳，武海峰 译",
+    "productPrice": 86.90,
+    "productCount": 2
+  },
+  {
+    "isSelected": false,
+    "productCover": "images/2.jpg",
+    "productName": "Linux就该这么学",
+    "productInfo": "轻量级Linux入门教程 红帽RHCE认证自学图书 源自日均访问量近10000次的线上热门Linux培训课程 基于RHEL7编写 配套站点免费提供各种资源",
+    "productPrice": 63.00,
+    "productCount": 1
+  },
+  {
+    "isSelected": false,
+    "productCover": "images/3.jpg",
+    "productName": "ES6标准入门（第3版）",
+    "productInfo": "抢先迈向ES2017/ES7 鸿篇巨制全面覆盖新增特性 丰富案例详解原理|用法|技巧",
+    "productPrice": 79.00,
+    "productCount": 1
+  },
+  {
+    "isSelected": true,
+    "productCover": "images/4.jpg",
+    "productName": "Vue.js项目实战",
+    "productInfo": "Vue.js 前端设计 Web开发 JavaScript 通过6个实战项目循序渐进地掌握完整的Vue开发技能 Vue.js核心团队成员作品  [法] 纪尧姆·周（Guillaume Chau） 著，周智勋，张伟杰，孔亚杰，李骏 译",
+    "productPrice": 56.40,
+    "productCount": 2
+  }
+]

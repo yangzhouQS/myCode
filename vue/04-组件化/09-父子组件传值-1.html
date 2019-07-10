@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src='../src/vue.js'></script>
+</head>
+<body>
+<div id="app">
+  <com1 :parentmsg='msg'></com1>
+</div>
+<script>
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      msg: 'xianjs父组件的数据'
+    },
+    methods: {},
+    components: {
+      com1: {
+        template: `<div>
+        <p>子组件获取父组件的数据</p>
+        <p>{{parentmsg}}</p>
+        </div>`,
+        props: ['parentmsg'],
+        //props的每一项相当于在当前组件声明了一个变量，如果想给props里面的每一项变量进行赋值，通过在当前组件标签上以属性的形式进行赋值
+      }
+    }
+  })
+</script>
+</body>
+</html>

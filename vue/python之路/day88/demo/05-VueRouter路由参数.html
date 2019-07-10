@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>命名路由</title>
+  <script src="vue.js"></script>
+  <script src="vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+</div>
+
+<script type="text/javascript">
+  //1.在Vue的根实例中注册VueRouter
+  Vue.use(VueRouter);
+
+  let Index = {
+    template: `
+      <div>
+        <h1>index首页</h1>
+      </div>
+    `,
+  };
+  let Login = {
+    template: `
+      <div>
+        <h1>Login登录界面</h1>
+      </div>
+    `,
+  };
+  let Regsiter = {
+    template: `
+      <div>
+        <h1>regsiter注册页面</h1>
+      </div>
+    `,
+  };
+  let App = {//根组件
+    /*
+    * 4.组件的渲染
+    * router-link:渲染为a标签,to渲染为href连接
+    * router-view:是出口
+    * */
+    template: `
+      <div>
+        <router-link :to="{ name:'index' }">首页</router-link>
+        <router-link :to="{ name:'login' }">登录</router-link>
+        <router-link :to="{ name:'regsiter' }">注册</router-link>
+
+        <router-view></router-view>
+      </div>
+    `,
+  };
+
+  //2.实例化router对象
+  let router = new VueRouter({
+    routes: [
+      {name: "index", path: "/index", component: Index},
+      {name: "login", path: "/login", component: Login},
+      {name: "regsiter", path: "/regsiter", component: Regsiter},
+    ]
+  });
+  new Vue({
+    el: "#app",
+    template: `<App></App>`,
+    //5.注册组件
+    components: {
+      App,
+    },
+    //  3.在vue实例中注册
+    router: router,
+  });
+</script>
+
+</body>
+</html>

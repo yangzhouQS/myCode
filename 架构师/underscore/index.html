@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text">
+
+<!--<script src="js/underscore%201.9.js"></script>-->
+<script src="js/demo.js"></script>
+<script>
+  /*
+  * 函数式编程:
+  *   函数式编程只是一个概念:使用没有副作用的函数进行编程
+  *
+  * */
+  function f1() {
+    var n=100;
+    function f2() {
+      alert(n);
+    }
+    return f2;
+  }
+  var fn = f1();
+  fn();
+
+</script>
+
+</body>
+</html>

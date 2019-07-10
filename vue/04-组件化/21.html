@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue</title>
+  <script src='../src/vue.js'></script>
+  <link rel='stylesheet' href='../src/bootstrap/css/bootstrap.css'>
+  <style>
+    li:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <ul>
+    <li v-for="item,index in items" v-on:click="handle(index)">
+      <span>{{item.name}}</span>
+      <span>{{numbers[index]}}</span>
+    </li>
+  </ul>
+</div>
+<script>
+  function handle(index) {
+// WHY: 更新数据，view层未渲染，但通过console这个数组可以发现数据确实更新了
+    if (typeof (this.numbers[index]) === "undefined") {
+      this.$set(this.numbers, index, 1);
+    } else {
+      console.log(this.numbers + "");
+      this.$set(this.numbers, index, ++this.numbers[index]);
+    }
+  }
+
+  var vm = new Vue({
+    el : ".wrap",
+    data : {
+      numbers : [],
+      items : [
+        { name : "jjj" },
+        { name : "kkk" },
+        { name : "lll" },
+      ]
+    },
+    methods : {
+      handle : function (index) {
+        console.log("hello word");
+        handle.call(this, index);
+      }
+    }
+  });
+</script>
+</body>
+</html>

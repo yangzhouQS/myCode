@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app">xianjs</div>
+<!--<script src="../myjQuery.js"></script>-->
+<script src="../jquery-1.6.1.js"></script>
+<script type="text/javascript">
+  var obj = document.getElementById('app');//Element 对象
+  console.log(obj);
+  /*
+  * 1>$(css选择器字符串,[可选的选择器上下文]):返回包含DOM的jQuery对象实例
+  * 2>html字符串 : $("<div></div>") 创建Element  DOM对象
+  * 3>jQuery(Element):封装DOM元素为jQuery对象
+  * 4>$(obj):封装普通的对象为jQuery对象
+  * 5>jQuery(callback):绑定ready事件监听函数,当DOM解构加载完毕的时候执行
+  * 6>jQuery(jQuery obj):接受jQuery对象,返回jQuery对象的拷贝实例
+  * 7>jQuery():创建一个空的jQ实例
+  * */
+  var $obj = $("#app");//获取的是jQuery实例,将所有的属性存储在实例的context属性上
+  console.log($obj);
+  console.log($("<div></div>"));
+
+</script>
+
+</body>
+</html>

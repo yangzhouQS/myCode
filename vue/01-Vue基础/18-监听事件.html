@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!--
+  1 - (监听事件)可以用 v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码,
+  2 - (事件处理方法)可以在methods定义方法绑定事件进行触发
+  -->
+  <button v-on:click="count++">{{count}}</button>
+  <button v-on:click="print">print</button>
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      count: 0
+    },
+    methods: {
+      //使用v-on:click="print"进行触发
+      print(e) {
+        console.log(this.count, e.target.tagName);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

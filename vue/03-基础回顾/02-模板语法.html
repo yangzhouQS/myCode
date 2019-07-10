@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <p>name = {{name}}</p>
+  <p>frieds = {{frieds}}</p>
+  <div v-html="strHTML"></div>
+  <div v-text="name"></div>
+  <p v-bind:class="redClass">属性绑定 v-bind </p>
+  <p>{{age<20?"age<20":"age>=20"}}</p>
+  <p>{{n*3}} {{n+3}} {{frieds.join("=")}}</p>
+  <p>
+    <!--<a href="{{url}}">百度</a>-->
+    <span >{{url}}</span>
+    <a :href="url">百度</a>
+  </p>
+</div>
+
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      url: "http://www.baidu.com",
+      name: "李四",
+      age: 26,
+      frieds: ['tom', '王五', '赵六'],
+      strHTML: "<p>插值表达式插入的标签</p>",
+      redClass: 'red',
+      n: 3
+    },
+
+  });
+  /*
+  * 模板语法
+  *   插值表达式:{{ 数据的名称 }}
+  *   html标签的处理:v-html
+  *   普通字符串的处理:v-text
+  *   动态的绑定属性:v-bind
+  *   js表达式:
+  *     可以进行运算
+  *     支持三元表达式==>不可以定义变量
+  *     可以调用函数==>支持调用数组的方法处理数组
+  * */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="bootstrap.css">
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+<div class="container">
+  <form action="" class="form-inline">
+    <div class="form-group">
+      <label for="txt">名称</label>
+      <input type="text" id="txt" class="form-control">
+      <button id="btn" class="btn btn-primary">添加</button>
+    </div>
+  </form>
+  <div>
+    <ul class="list">
+      <li>abc</li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  let btn = $('#btn');
+  let txt = $("#txt");
+  let list = $('.list');
+  btn.on('click', function () {
+    let li = `<li>${txt.val()}</li>`;
+    list.append(li);
+    return false;
+  })
+</script>
+
+</body>
+</html>

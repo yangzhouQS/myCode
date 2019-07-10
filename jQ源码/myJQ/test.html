@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="xianjs">
+  <span>xianjs</span>
+</div>
+<!--<script src="./jquery-1.6.1.js"></script>-->
+<script src="./01JQ.js"></script>
+<script>
+
+  var arr = ['a', 'b', 'c'];
+  var obj = {name: "lisi", age: 26};
+
+  $.each(arr, function (i, v) {
+    console.log(i, v);
+  }, ['x', '*']);
+
+  /*var obj = {
+    name: 'xxx', gender: '男', say: function () {
+      console.log('say1');
+    }
+  };
+  var obj2 = {
+    name: 'tom', age: 33, address: '西安', say: function () {
+      console.log('say2');
+    }, say2: function () {
+      console.log('say22');
+    }, demo: {
+      say: function () {
+        console.log('demo say');
+      }
+    }
+  };
+
+  //任意对象进行扩展
+  // 浅拷贝
+  // $.extend(obj, obj2);//{name: "tom", gender: "男", age: 33}
+
+  $.extend(obj, obj2);
+
+
+  // 深拷贝
+  // $.extend(true, obj2, obj2);
+
+  //jQuery本身进行扩展
+  $.extend({
+    work: function () {
+      console.log('work对jQuery本身进行扩展的');
+    }
+  });
+
+  //jQuery实例进行扩展
+  $.fn.extend({
+    myWork: function () {
+      console.log('myWork jquery实例进行扩展');
+    }
+  });
+  $().myWork();*/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>作用域链的一些扩展</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  function fn() {
+    var a = 12;
+    b = 13;//变量提升：无
+    //console.log('b' in window);//=>true
+    // 在作用域链查找的过程中，如果找到WIN也没有这个变量，相当于给WIN设置了一个属性B (window.b=13)
+    console.log(a, b)
+  }
+
+  fn();
+  console.log(a, b)
+
+</script>
+
+</body>
+</html>

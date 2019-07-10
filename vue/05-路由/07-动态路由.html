@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>动态路由</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+  <script src="../src/axios.js"></script>
+  <script src="../src/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>路由参数</h1>
+  <div>
+    <router-link to="/user/100" tag="a">user</router-link>
+    <router-link to="/user/200" tag="a">home</router-link>
+  </div>
+  <router-view></router-view>
+</div>
+<template id="user">
+  <!--
+  $route.params:匹配到的是一个对象
+  路由参数的获取: { "id": "100" }
+  -->
+  <div>
+    <h1>user组件</h1>
+    <p>路由参数的获取: {{$route.params}}</p>
+  </div>
+</template>
+<template id="home">
+  <div>
+    <h1>home组件</h1>
+    <p>路由参数的获取: {{$route.params.id}}</p>
+  </div>
+</template>
+
+<script type="text/javascript">
+  //创建组件
+  let user = {
+    template: '#user',
+    watch: {
+      '$route'(to, from) {
+        console.log(`从${from.params.id}到${to.params.id}`);
+      }
+    }
+  };
+  let home = {
+    template: '#home'
+  };
+  //路由的匹配
+  const routes = [
+    {path: '/', redirect: '/user'},
+    {path: '/user/:id', component: user},
+    {path: '/home/:id', component: home}
+  ];
+  //创建路由
+  const router = new VueRouter({
+    routes: routes
+  });
+  //路由挂载
+  new Vue({router}).$mount('#app');
+</script>
+
+</body>
+</html>

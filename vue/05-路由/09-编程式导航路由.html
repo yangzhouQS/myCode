@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+  <script src="../src/axios.js"></script>
+  <script src="../src/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+  <router-link to="/user">user</router-link>
+  <router-link to="/register">register</router-link>
+  <router-view></router-view>
+</div>
+<template id="user">
+  <p>user 用户中心</p>
+</template>
+<template id="register">
+  <p>register 用户注册</p>
+</template>
+<script type="text/javascript">
+  let User = {
+    template: '#user'
+  };
+  let Register = {
+    template: '#register'
+  };
+  let routes = [
+    {path: '/', redirect: '/user'},
+    {path: '/user', component: User},
+    {path: '/register', component: Register}
+  ];
+  let router = new VueRouter({routes});
+  new Vue({router}).$mount('#app');
+  //path：路由，query：字段
+
+  /*
+   可以通过router.push来跳转路由，和router-link效果一样，这个方法会向history栈添加一新的记录
+   会直接跳转到一个新的路由
+  */
+  //第一次进入页面会进行跳转的,并且有回退的功能
+  router.push({path: '/register', query: {user: 'sam'}});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <template v-if="bool">
+    <label>手机登录 : <input type="text" key="tel" placeholder="手机登录"></label>
+  </template>
+  <template v-else="bool">
+    <label>邮箱登录 : <input type="text" key="email" placeholder="邮箱登录"></label>
+  </template>
+  <button @click="toggle">登录方式切换</button>
+</div>
+
+<script type="text/javascript">
+
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      bool: true
+    },
+    methods: {
+      toggle() {
+        this.bool = !this.bool;
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

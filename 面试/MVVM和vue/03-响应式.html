@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>响应式</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  //defineProperty
+  let obj = {};
+  let val = 'xianjs';
+
+  //PROXY
+  Object.defineProperty(obj, 'name', {
+    get: function () {
+      console.log('劫持你获取name属性值');
+      return val;
+    },
+    set: function (newVal) {
+      console.log('劫持你设置name属性值');
+      val = newVal;
+    }
+  });
+  console.log(obj);
+  console.log('name = ', obj.name);
+  obj.name = '北京';//设置name属性值
+</script>
+
+</body>
+</html>

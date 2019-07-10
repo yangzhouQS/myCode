@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="src/vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .top {
+      width: 200px;
+      height: 200px;
+      background-color: deeppink;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="app">
+  <div class="top" @click.stop="father">
+    事件处理的测试
+    <!--@click.stop:阻止事件冒泡-->
+    <button @click.stop="damao">事件测试</button>
+  </div>
+
+  <!--
+  事件修饰符:
+  .stop:阻止冒泡
+  .prevent:阻止默认行为
+  .capture:捕获阶段发生
+  .self:只当在 event.target 是当前元素自身时触发处理函数,即事件不是从内部元素触发的
+  .once:执行一次,以后不会执行啦
+  .passive:v2.3新增的事件修饰符,.passive 修饰符尤其能够提升移动端的性能。
+    passive会告诉浏览器你不想阻止事件的默认行为。
+  -->
+
+  <!--
+  按键修饰符
+  .enter
+  .tab
+  .delete (捕获“删除”和“退格”键)
+  .esc
+  .space
+  .up
+  .down
+  .left
+  .right
+  -->
+  <input type="text" @keyup.enter="f1" v-model="a">
+  <!--按下回车键时触发f1事件函数-->
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      a: 10
+    },
+    methods: {
+      father(){
+        console.log("father");
+      },
+      damao(){
+        console.log("damao");
+      },
+      f1(){
+        this.a = 999;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

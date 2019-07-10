@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.top img {
+  width: 10rem;
+  height: 10rem;
+}
+.product {
+  padding: 0.48rem;
+}
+.product .name {
+  color: #07111b;
+  font-size: 0.37333333rem;
+  line-height: 0.37333333rem;
+  font-weight: bold;
+}
+.product .sale {
+  margin-top: 0.21333333rem;
+  margin-bottom: 0.48rem;
+  font-size: 0.26666667rem;
+  color: #93999f;
+}
+.product .sale span:first-child {
+  margin-right: 0.32rem;
+}
+.product .price span:first-child {
+  color: #f01414;
+}
+.product .price span:first-child span:nth-child(1) {
+  font-size: 0.26666667rem;
+  font-weight: normal;
+}
+.product .price span:first-child span:nth-child(2) {
+  font-size: 0.37333333rem;
+  font-weight: bold;
+}
+/*# sourceMappingURL=b.css.map */

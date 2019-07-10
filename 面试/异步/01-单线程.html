@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+  /*
+  * 单线程只做一件事情:
+  *   for循环,CPU计算,此时单线程只做一件事情
+  *   避免DOM渲染的冲突
+  *
+  *     浏览器需要渲染 DOM
+  *     JS 可以修改 DOM 结构
+  *     JS 执行的时候，浏览器 DOM 渲染会暂停
+  *     避免同时操作DOM引起的冲突,所以浏览器端的js是单线程的
+  *     两段 JS 也不能同时执行（都修改 DOM 就冲突了）
+  *     webWorker 支持多线程，但是不能访问 DOM
+  *
+  * */
+  let sum = 0;
+  for (let i = 0, len = 100000000; i < len; i++) {
+    sum += i
+  }
+  setTimeout(() => {
+    console.log('定时器');
+  })
+  console.log('1');
+  alert(2);//alert阻止代码的执行,DOM渲染停止
+  console.log('3');
+</script>
+<div>hello</div>
+</body>
+</html>

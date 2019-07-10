@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+  <style> .tab {width: 300px;height: 400px;}  .hd {height: 100px;border: 1px solid #ddd;}  .hd span {height: 100px;width: 99px;float: left;line-height: 100px;text-align: center;box-sizing: border-box;border-right: 1px solid red;}  .hd span.active {background-color: deeppink;}  .bd {width: 300px;height: 300px;border: 1px solid #ddd;border-top: none;}  .bd div {width: 100%;height: 100%;text-align: center;display: none;}  .bd div.active {display: block;background: darkgreen;color: #fff;font-size: 30px;}</style>
+</head>
+<body>
+<div id="app">
+  <div class="tab">
+    <div class="hd">
+      <span v-for="(item,index) in titleList"
+            :class="index === i ?'active' : null"
+            @click="titleClick(index)"
+      >{{item}}</span>
+    </div>
+    <div class="bd">
+      <div v-for="(item,index) in conList"
+           :class="index === i ?'active' : null"
+      >{{item}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      titleList: ['选项一', '选项二', '选项三'],
+      conList: ['内容一', '内容二', '内容三'],
+      i: 0
+    },
+    methods: {
+      titleClick(index) {
+        this.i = index;
+      }
+    }
+  });
+</script>
+</body>
+</html>

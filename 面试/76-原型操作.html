@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.getName = function () {
+      console.log(this.name);
+    };
+  }
+
+  let p = new Person('tom', 26);
+  console.log(p.constructor.prototype);
+  console.log(p.__proto__ === p.constructor.prototype);//true
+  console.log(p.__proto__ === Person.prototype);//true
+  console.dir(Person);
+  console.log(p);
+</script>
+</body>
+</html>

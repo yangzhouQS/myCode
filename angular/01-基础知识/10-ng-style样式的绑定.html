@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="../src/angular.js"></script>
+	<link rel="stylesheet" href="../src/bootstrap/css/bootstrap.css">
+</head>
+<style>
+	.red {
+		color: red;
+	}
+</style>
+<body ng-app="app">
+<div ng-controller="myCtr">
+	<p>
+		<span ng-style="{fontSize:'60px',color:'red'}">对象的方式设置样式</span><br>
+		<span ng-style="txtStyle">变量的方式设置样式</span>
+	</p>
+</div>
+<script>
+  let app = angular.module('app', []);
+  app.controller('myCtr', ['$scope', function ($scope) {
+    //变量的方式设置样式
+    $scope.txtStyle = { color: 'red', background: '#666' };
+  }]);
+</script>
+</body>
+</html>

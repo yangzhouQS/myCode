@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  class Dep {
+    constructor() {
+      this.subs = [];//订阅存储列表
+    }
+
+    //增加订阅者
+    addSub(sub) {
+      this.subs.push(sub);
+    }
+
+    //通知订阅者
+    notify() {
+      this.subs.forEach(sub => {
+        sub.update();
+      })
+    }
+  }
+
+  const dep = new Dep();
+  const sub = {
+    update() {
+      console.log('sub1 update');
+    }
+  }
+  const sub2 = {
+    update() {
+      console.log('sub2 update');
+    }
+  }
+
+  dep.addSub(sub)
+  dep.addSub(sub2)
+  dep.notify();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <input type="text" placeholder="回车触发..." @keyup.enter="fn">
+  <input type="text" placeholder="f2触发" @keyup.f2="fn2">
+</div>
+<script type="text/javascript">
+  Vue.config.keyCodes.f2 = 113
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      name: "lisi",
+    },
+    methods: {
+      fn() {
+        alert('fn');
+      }, fn2() {
+        alert('fn2')
+      }
+    }
+  });
+</script>
+
+<!--
+组长姓名:杨周
+组员姓名: 郑东艳, 杨周, 李园, 赫霞, 罗哲, 代路-->
+</body>
+</html>

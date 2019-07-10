@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  var module1 = (function () {
+    var hello = "hello";
+    return {
+      hello
+    }
+  })();
+  var module2 = (function (module1) {
+    module1.demo = 'xx';
+    module1.say = function () {
+      console.log('say');
+    }
+    return {
+      module1: module1
+    }
+  })(module1);
+  console.log(module2);
+  module2.module1.say();
+
+</script>
+
+</body>
+</html>

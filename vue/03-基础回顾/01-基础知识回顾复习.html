@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>变量的输出: name = {{name}}</p>
+  <p>数组的输出: frieds = {{frieds}}</p>
+  <p>函数的调用: say = {{say()}} , {{hello()}}</p>
+</div>
+
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      name: "李四",
+      age: 26,
+      frieds: ['tom', '王五', '赵六']
+    },
+    methods: {
+      say() {
+        return 'say hello';
+      },
+      hello() {
+        return this.name;
+      }
+    },
+    created() {
+      console.log(this.say());
+      console.log(123);
+    }
+  });
+  //访问数据
+  console.log(vm.name);
+  console.log(vm.frieds);
+  //访问所有的数据
+  console.log(vm.$data);
+
+  /*
+  * 总结:
+  * Vue实例
+  *   1.el属性(绑定元素)
+  *   2.data属性:绑定的是数据
+  *     data:里面可以存放任意的数据类型
+  *   3.methods顺序:方法集
+  *   4.生命周期函数
+  *     4.1 created==>是一个函数/不是对象
+  *     4.2 mounted
+  * */
+</script>
+
+</body>
+</html>

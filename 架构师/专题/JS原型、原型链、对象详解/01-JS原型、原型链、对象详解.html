@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>JS原型、原型链、对象详解</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  //JS原型、原型链、对象详解
+  //1.普通对象
+  let o1 = {};
+  let o2 = new Object();
+  let o3 = new f1();
+
+  //2.函数对象
+  function f1() {
+  }
+
+  let f2 = function () {
+  };
+  let f3 = new Function('str', 'console.log(str)');
+  console.log(typeof Object);//object
+  console.log(typeof Function);//function
+
+  console.log('函数对象的检测');
+  console.log(typeof f1);//function
+  console.log(typeof f2);//function
+  console.log(typeof f3);//function
+
+  console.log('普通对象的检测');
+  console.log(typeof o1);//object
+  console.log(typeof o2);//object
+  console.log(typeof o3);//object
+  /*
+    怎么区分，其实很简单，凡是通过 new Function() 创建的对象都是函数对象，其他的都是普通对象。
+    f1,f2,归根结底都是通过 new Function()的方式进行创建的。
+  */
+</script>
+
+</body>
+</html>

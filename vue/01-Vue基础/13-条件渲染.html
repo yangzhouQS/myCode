@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+  <script type="text/javascript" src="vue.js"></script>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--
+  v-if="flag":flag为true时显示,使用的是remove移除
+  v-else="flag":false时显示
+  v-show="xian":隐藏操作的是display:none;不会引起dom回流,效率高
+  -->
+  <p v-if="flag">if显示</p>
+  <p v-else="flag">else操作</p>
+  <p><input type="text" v-model="flag"></p>
+  <p v-show="flag">我会显示吗??</p>
+
+</div>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      xian: false,
+      flag: '',
+    }
+  });
+
+</script>
+
+</body>
+</html>

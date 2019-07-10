@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="../src/vue.js"></script>
+  <style type="text/css">
+    .red {
+      color: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .fz30 {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!--<p style="color: red; font-size: 30px;">样式绑定</p>-->
+  <p :style="{color:'red','font-size':'30px'}">样式绑定</p>
+  <!--将样式定义为对象
+  style="color: red; font-size: 40px; font-weight: 700;"
+  -->
+  <p :style="h1StyleObj">样式绑定</p>
+  <!--style="color: red; font-size: 40px; font-weight: 700; background: green;"-->
+  <p :style="[h1StyleObj,h1StyleObj2]">样式绑定</p>
+</div>
+<script type="text/javascript">
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      h1StyleObj: {color: 'red', 'font-size': '40px', 'font-weight': '700'}, h1StyleObj2: {background: 'green'}
+    },
+    methods: {},
+  });
+</script>
+
+</body>
+</html>
